@@ -34,7 +34,9 @@ const Login = () => {
 					Not a member yet?{" "}
 					<Link
 						className="ml-2 link-hover link-primary capitalize"
+
 						to="/register"
+
 					>
 						Register
 					</Link>
