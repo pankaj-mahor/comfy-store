@@ -25,6 +25,10 @@ const router = createBrowserRouter([
 				element: <Landing />,
 			},
 			{
+				path: "about",
+				element: <About />,
+			},
+			{
 				path: "products",
 				element: <Products />,
 			},
