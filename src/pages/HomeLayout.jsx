@@ -12,5 +12,5 @@ const HomeLayout = () => {
 			</section>
 		</>
 	);
-
+};
 export default HomeLayout;

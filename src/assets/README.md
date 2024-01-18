@@ -38,11 +38,11 @@ tailwind.config.cjs
 ```js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	theme: {
+		extend: {},
+	},
+	plugins: [],
 };
 ```
 
@@ -53,7 +53,7 @@ export default {
 
 ```js
 const App = () => {
-  return <div>App</div>;
+	return <div>App</div>;
 };
 export default App;
 ```
@@ -78,7 +78,7 @@ Tailwind directives are instructions that decide how Tailwind CSS creates the st
 
 ```js
 const App = () => {
-  return <h1 className='text-7xl font-bold underline'>Tailwind project</h1>;
+	return <h1 className="text-7xl font-bold underline">Tailwind project</h1>;
 };
 export default App;
 ```
@@ -132,7 +132,7 @@ pages/About.jsx
 
 ```js
 const About = () => {
-  return <h1 className='text-4xl'>About</h1>;
+	return <h1 className="text-4xl">About</h1>;
 };
 export default About;
 ```
@@ -140,35 +140,35 @@ export default About;
 pages/index.js
 
 ```js
-export { default as HomeLayout } from './HomeLayout';
-export { default as Landing } from './Landing';
-export { default as SingleProduct } from './SingleProduct';
-export { default as Products } from './Products';
-export { default as Cart } from './Cart';
-export { default as Error } from './Error';
-export { default as About } from './About';
-export { default as Login } from './Login';
-export { default as Register } from './Register';
-export { default as Checkout } from './Checkout';
-export { default as Orders } from './Orders';
+export { default as HomeLayout } from "./HomeLayout";
+export { default as Landing } from "./Landing";
+export { default as SingleProduct } from "./SingleProduct";
+export { default as Products } from "./Products";
+export { default as Cart } from "./Cart";
+export { default as Error } from "./Error";
+export { default as About } from "./About";
+export { default as Login } from "./Login";
+export { default as Register } from "./Register";
+export { default as Checkout } from "./Checkout";
+export { default as Orders } from "./Orders";
 ```
 
 App.jsx
 
 ```js
 import {
-  HomeLayout,
-  Landing,
-  Error,
-  Products,
-  SingleProduct,
-  Cart,
-  About,
-  Register,
-  Login,
-  Checkout,
-  Orders,
-} from './pages';
+	HomeLayout,
+	Landing,
+	Error,
+	Products,
+	SingleProduct,
+	Cart,
+	About,
+	Register,
+	Login,
+	Checkout,
+	Orders,
+} from "./pages";
 ```
 
 ## Challenge (4) - React Router
@@ -206,55 +206,55 @@ import {
 App.jsx
 
 ```js
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-      },
-      {
-        path: 'products',
-        element: <Products />,
-      },
-      {
-        path: 'products/:id',
-        element: <SingleProduct />,
-      },
-      {
-        path: 'cart',
-        element: <Cart />,
-      },
-      { path: 'about', element: <About /> },
-      {
-        path: 'checkout',
-        element: <Checkout />,
-      },
-      {
-        path: 'orders',
-        element: <Orders />,
-      },
-    ],
-  },
-  {
-    path: '/login',
-    element: <Login />,
-    errorElement: <Error />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
-    errorElement: <Error />,
-  },
+	{
+		path: "/",
+		element: <HomeLayout />,
+		errorElement: <Error />,
+		children: [
+			{
+				index: true,
+				element: <Landing />,
+			},
+			{
+				path: "products",
+				element: <Products />,
+			},
+			{
+				path: "products/:id",
+				element: <SingleProduct />,
+			},
+			{
+				path: "cart",
+				element: <Cart />,
+			},
+			{ path: "about", element: <About /> },
+			{
+				path: "checkout",
+				element: <Checkout />,
+			},
+			{
+				path: "orders",
+				element: <Orders />,
+			},
+		],
+	},
+	{
+		path: "/login",
+		element: <Login />,
+		errorElement: <Error />,
+	},
+	{
+		path: "/register",
+		element: <Register />,
+		errorElement: <Error />,
+	},
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+	return <RouterProvider router={router} />;
 };
 export default App;
 ```
@@ -262,17 +262,17 @@ export default App;
 HomeLayout.jsx
 
 ```js
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 const HomeLayout = () => {
-  return (
-    <>
-      <nav>
-        <span className='text-4xl text-primary'>Comfy</span>
-      </nav>
-      <Outlet />
-    </>
-  );
+	return (
+		<>
+			<nav>
+				<span className="text-4xl text-primary">Comfy</span>
+			</nav>
+			<Outlet />
+		</>
+	);
 };
 export default HomeLayout;
 ```
@@ -317,35 +317,35 @@ export default HomeLayout;
 Error.jsx
 
 ```js
-import { useRouteError, Link } from 'react-router-dom';
+import { useRouteError, Link } from "react-router-dom";
 const Error = () => {
-  const error = useRouteError();
-  console.log(error);
-  if (error.status === 404)
-    return (
-      <main className='grid min-h-[100vh] place-items-center px-8 '>
-        <div className='text-center'>
-          <p className='text-9xl font-semibold text-primary'>404</p>
-          <h1 className='mt-4 text-3xl font-bold tracking-tight sm:text-5xl'>
-            Page not found
-          </h1>
-          <p className='mt-6 text-lg leading-7 '>
-            Sorry, we couldn’t find the page you’re looking for.
-          </p>
-          <div className='mt-10 '>
-            <Link to='/' className='btn btn-secondary'>
-              Go back home
-            </Link>
-          </div>
-        </div>
-      </main>
-    );
+	const error = useRouteError();
+	console.log(error);
+	if (error.status === 404)
+		return (
+			<main className="grid min-h-[100vh] place-items-center px-8 ">
+				<div className="text-center">
+					<p className="text-9xl font-semibold text-primary">404</p>
+					<h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
+						Page not found
+					</h1>
+					<p className="mt-6 text-lg leading-7 ">
+						Sorry, we couldn’t find the page you’re looking for.
+					</p>
+					<div className="mt-10 ">
+						<Link to="/" className="btn btn-secondary">
+							Go back home
+						</Link>
+					</div>
+				</div>
+			</main>
+		);
 
-  return (
-    <main className='grid min-h-[100vh] place-items-center px-8 '>
-      <h4 className='text-center font-bold text-4xl'>there was an error... </h4>
-    </main>
-  );
+	return (
+		<main className="grid min-h-[100vh] place-items-center px-8 ">
+			<h4 className="text-center font-bold text-4xl">there was an error... </h4>
+		</main>
+	);
 };
 export default Error;
 ```
@@ -390,26 +390,26 @@ export default Error;
 components/index.js
 
 ```js
-export { default as FormInput } from './FormInput';
+export { default as FormInput } from "./FormInput";
 ```
 
 FormInput.jsx
 
 ```js
 const FormInput = ({ label, name, type, defaultValue }) => {
-  return (
-    <div className='form-control '>
-      <label className='label'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <input
-        type={type}
-        name={name}
-        defaultValue={defaultValue}
-        className='input input-bordered '
-      />
-    </div>
-  );
+	return (
+		<div className="form-control ">
+			<label className="label">
+				<span className="label-text capitalize">{label}</span>
+			</label>
+			<input
+				type={type}
+				name={name}
+				defaultValue={defaultValue}
+				className="input input-bordered "
+			/>
+		</div>
+	);
 };
 export default FormInput;
 ```
@@ -497,47 +497,47 @@ export default FormInput;
 Login.jsx
 
 ```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, Link } from 'react-router-dom';
+import { FormInput, SubmitBtn } from "../components";
+import { Form, Link } from "react-router-dom";
 
 const Login = () => {
-  return (
-    <section className='h-screen grid place-items-center'>
-      <Form
-        method='post'
-        className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
-        <h4 className='text-center text-3xl font-bold'>Login</h4>
-        <FormInput
-          type='email'
-          label='email'
-          name='identifier'
-          defaultValue='test@test.com'
-        />
-        <FormInput
-          type='password'
-          label='password'
-          name='password'
-          defaultValue='secret'
-        />
-        <div className='mt-4'>
-          <SubmitBtn text='login' />
-        </div>
-        <button type='button' className='btn btn-secondary btn-block'>
-          guest user
-        </button>
-        <p className='text-center'>
-          Not a member yet?
-          <Link
-            to='/register'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
-            register
-          </Link>
-        </p>
-      </Form>
-    </section>
-  );
+	return (
+		<section className="h-screen grid place-items-center">
+			<Form
+				method="post"
+				className="card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4"
+			>
+				<h4 className="text-center text-3xl font-bold">Login</h4>
+				<FormInput
+					type="email"
+					label="email"
+					name="identifier"
+					defaultValue="test@test.com"
+				/>
+				<FormInput
+					type="password"
+					label="password"
+					name="password"
+					defaultValue="secret"
+				/>
+				<div className="mt-4">
+					<SubmitBtn text="login" />
+				</div>
+				<button type="button" className="btn btn-secondary btn-block">
+					guest user
+				</button>
+				<p className="text-center">
+					Not a member yet?
+					<Link
+						to="/register"
+						className="ml-2 link link-hover link-primary capitalize"
+					>
+						register
+					</Link>
+				</p>
+			</Form>
+		</section>
+	);
 };
 export default Login;
 ```
@@ -545,26 +545,26 @@ export default Login;
 SubmitBtn.jsx
 
 ```js
-import { useNavigation } from 'react-router-dom';
+import { useNavigation } from "react-router-dom";
 const SubmitBtn = ({ text }) => {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
-  return (
-    <button
-      type='submit'
-      className='btn btn-primary btn-block'
-      disabled={isSubmitting}
-    >
-      {isSubmitting ? (
-        <>
-          <span className='loading loading-spinner'></span>
-          sending...
-        </>
-      ) : (
-        text || 'submit'
-      )}
-    </button>
-  );
+	const navigation = useNavigation();
+	const isSubmitting = navigation.state === "submitting";
+	return (
+		<button
+			type="submit"
+			className="btn btn-primary btn-block"
+			disabled={isSubmitting}
+		>
+			{isSubmitting ? (
+				<>
+					<span className="loading loading-spinner"></span>
+					sending...
+				</>
+			) : (
+				text || "submit"
+			)}
+		</button>
+	);
 };
 export default SubmitBtn;
 ```
@@ -615,36 +615,36 @@ export default SubmitBtn;
 ## Solution (8) - Register Page Structure
 
 ```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, Link } from 'react-router-dom';
+import { FormInput, SubmitBtn } from "../components";
+import { Form, Link } from "react-router-dom";
 
 const Register = () => {
-  return (
-    <section className='h-screen grid place-items-center'>
-      <Form
-        method='POST'
-        className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
-        <h4 className='text-center text-3xl font-bold'>Register</h4>
-        <FormInput type='text' label='username' name='username' />
-        <FormInput type='email' label='email' name='email' />
-        <FormInput type='password' label='password' name='password' />
-        <div className='mt-4'>
-          <SubmitBtn text='register' />
-        </div>
+	return (
+		<section className="h-screen grid place-items-center">
+			<Form
+				method="POST"
+				className="card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4"
+			>
+				<h4 className="text-center text-3xl font-bold">Register</h4>
+				<FormInput type="text" label="username" name="username" />
+				<FormInput type="email" label="email" name="email" />
+				<FormInput type="password" label="password" name="password" />
+				<div className="mt-4">
+					<SubmitBtn text="register" />
+				</div>
 
-        <p className='text-center'>
-          Already a member?
-          <Link
-            to='/login'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
-            login
-          </Link>
-        </p>
-      </Form>
-    </section>
-  );
+				<p className="text-center">
+					Already a member?
+					<Link
+						to="/login"
+						className="ml-2 link link-hover link-primary capitalize"
+					>
+						login
+					</Link>
+				</p>
+			</Form>
+		</section>
+	);
 };
 export default Register;
 ```
@@ -661,15 +661,15 @@ index.css
 
 ```css
 @layer components {
-  .align-element {
-    @apply mx-auto max-w-6xl px-8;
-  }
+	.align-element {
+		@apply mx-auto max-w-6xl px-8;
+	}
 }
 ```
 
 ```js
-<section className='align-element py-20'>
-  <Outlet />
+<section className="align-element py-20">
+	<Outlet />
 </section>
 ```
 
@@ -708,25 +708,25 @@ index.css
 ## Solution (10) - Header Component
 
 ```js
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  return (
-    <header className=' bg-neutral py-2 text-neutral-content '>
-      <div className='align-element flex justify-center sm:justify-end '>
-        {/* USER */}
-        {/* LINKS */}
-        <div className='flex gap-x-6 justify-center items-center'>
-          <Link to='/login' className='link link-hover text-xs sm:text-sm'>
-            Sign in / Guest
-          </Link>
-          <Link to='/register' className='link link-hover text-xs sm:text-sm'>
-            Create an Account
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+	return (
+		<header className=" bg-neutral py-2 text-neutral-content ">
+			<div className="align-element flex justify-center sm:justify-end ">
+				{/* USER */}
+				{/* LINKS */}
+				<div className="flex gap-x-6 justify-center items-center">
+					<Link to="/login" className="link link-hover text-xs sm:text-sm">
+						Sign in / Guest
+					</Link>
+					<Link to="/register" className="link link-hover text-xs sm:text-sm">
+						Create an Account
+					</Link>
+				</div>
+			</div>
+		</header>
+	);
 };
 export default Header;
 ```
@@ -786,53 +786,53 @@ export default Header;
 ## Solution (11) - Navbar Structure
 
 ```js
-import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
-import { FaBarsStaggered } from 'react-icons/fa6';
-import { NavLink } from 'react-router-dom';
+import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  return (
-    <nav className='bg-base-200'>
-      <div className='navbar align-element '>
-        <div className='navbar-start'>
-          {/* Title */}
-          <NavLink
-            to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center '
-          >
-            C
-          </NavLink>
-          {/* DROPDOWN */}
-          <div className='dropdown'>
-            <label tabIndex={0} className='btn btn-ghost lg:hidden'>
-              <FaBarsStaggered className='h-6 w-6' />
-            </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
-              nav links
-            </ul>
-          </div>
-        </div>
-        <div className='navbar-center hidden lg:flex'>
-          <ul className='menu menu-horizontal '>nav links</ul>
-        </div>
-        <div className='navbar-end'>
-          {/* THEME ICONS */}
-          {/* CART LINK*/}
-          <NavLink to='cart' className='btn btn-ghost btn-circle btn-md ml-4'>
-            <div className='indicator'>
-              <BsCart3 className='h-6 w-6' />
-              <span className='badge badge-sm badge-primary indicator-item'>
-                8
-              </span>
-            </div>
-          </NavLink>
-        </div>
-      </div>
-    </nav>
-  );
+	return (
+		<nav className="bg-base-200">
+			<div className="navbar align-element ">
+				<div className="navbar-start">
+					{/* Title */}
+					<NavLink
+						to="/"
+						className="hidden lg:flex btn btn-primary text-3xl items-center "
+					>
+						C
+					</NavLink>
+					{/* DROPDOWN */}
+					<div className="dropdown">
+						<label tabIndex={0} className="btn btn-ghost lg:hidden">
+							<FaBarsStaggered className="h-6 w-6" />
+						</label>
+						<ul
+							tabIndex={0}
+							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
+						>
+							nav links
+						</ul>
+					</div>
+				</div>
+				<div className="navbar-center hidden lg:flex">
+					<ul className="menu menu-horizontal ">nav links</ul>
+				</div>
+				<div className="navbar-end">
+					{/* THEME ICONS */}
+					{/* CART LINK*/}
+					<NavLink to="cart" className="btn btn-ghost btn-circle btn-md ml-4">
+						<div className="indicator">
+							<BsCart3 className="h-6 w-6" />
+							<span className="badge badge-sm badge-primary indicator-item">
+								8
+							</span>
+						</div>
+					</NavLink>
+				</div>
+			</div>
+		</nav>
+	);
 };
 export default Navbar;
 ```
@@ -875,30 +875,30 @@ NavLinks.jsx
 
 ```js
 const links = [
-  { id: 1, url: '/', text: 'home' },
-  { id: 2, url: 'about', text: 'about' },
-  { id: 3, url: 'products', text: 'products' },
-  { id: 4, url: 'cart', text: 'cart' },
-  { id: 5, url: 'checkout', text: 'checkout' },
-  { id: 6, url: 'orders', text: 'orders' },
+	{ id: 1, url: "/", text: "home" },
+	{ id: 2, url: "about", text: "about" },
+	{ id: 3, url: "products", text: "products" },
+	{ id: 4, url: "cart", text: "cart" },
+	{ id: 5, url: "checkout", text: "checkout" },
+	{ id: 6, url: "orders", text: "orders" },
 ];
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const NavLinks = () => {
-  return (
-    <>
-      {links.map((link) => {
-        const { id, url, text } = link;
-        return (
-          <li key={id}>
-            <NavLink className='capitalize' to={url}>
-              {text}
-            </NavLink>
-          </li>
-        );
-      })}
-    </>
-  );
+	return (
+		<>
+			{links.map((link) => {
+				const { id, url, text } = link;
+				return (
+					<li key={id}>
+						<NavLink className="capitalize" to={url}>
+							{text}
+						</NavLink>
+					</li>
+				);
+			})}
+		</>
+	);
 };
 export default NavLinks;
 ```
@@ -910,24 +910,24 @@ export default NavLinks;
 ## Solution (13) - Toggle Component
 
 ```js
-import { useState } from 'react';
+import { useState } from "react";
 
 const [theme, setTheme] = useState(false);
 
 const handleTheme = () => {
-  setTheme(!theme);
+	setTheme(!theme);
 };
-<div className='navbar-end'>
-  <label className='swap swap-rotate '>
-    {/* this hidden checkbox controls the state */}
-    <input type='checkbox' onChange={handleTheme} />
+<div className="navbar-end">
+	<label className="swap swap-rotate ">
+		{/* this hidden checkbox controls the state */}
+		<input type="checkbox" onChange={handleTheme} />
 
-    {/* sun icon */}
-    <BsSunFill className='swap-on h-4 w-4' />
+		{/* sun icon */}
+		<BsSunFill className="swap-on h-4 w-4" />
 
-    {/* moon icon */}
-    <BsMoonFill className='swap-off h-4 w-4' />
-  </label>
+		{/* moon icon */}
+		<BsMoonFill className="swap-off h-4 w-4" />
+	</label>
 </div>;
 ```
 
@@ -1031,28 +1031,28 @@ const Navbar = () => {
 
 ```js
 const About = () => {
-  return (
-    <>
-      <div className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center'>
-        <h1 className='text-4xl font-bold leading-none tracking-tight sm:text-6xl '>
-          We love
-        </h1>
-        <div className='stats bg-primary shadow'>
-          <div className='stat'>
-            <div className='stat-title text-primary-content text-4xl font-bold tracking-widest'>
-              comfy
-            </div>
-          </div>
-        </div>
-      </div>
-      <p className='mt-6 text-lg leading-8 max-w-2xl mx-auto'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic veniam
-        odit, officiis eos mollitia alias, doloremque, aspernatur ratione
-        asperiores voluptas labore minus dolores reprehenderit corporis quos.
-        Assumenda molestias harum dignissimos?
-      </p>
-    </>
-  );
+	return (
+		<>
+			<div className="flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center">
+				<h1 className="text-4xl font-bold leading-none tracking-tight sm:text-6xl ">
+					We love
+				</h1>
+				<div className="stats bg-primary shadow">
+					<div className="stat">
+						<div className="stat-title text-primary-content text-4xl font-bold tracking-widest">
+							comfy
+						</div>
+					</div>
+				</div>
+			</div>
+			<p className="mt-6 text-lg leading-8 max-w-2xl mx-auto">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic veniam
+				odit, officiis eos mollitia alias, doloremque, aspernatur ratione
+				asperiores voluptas labore minus dolores reprehenderit corporis quos.
+				Assumenda molestias harum dignissimos?
+			</p>
+		</>
+	);
 };
 export default About;
 ```
@@ -1086,48 +1086,48 @@ export default About;
 Hero.jsx
 
 ```js
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import hero1 from '../assets/hero1.webp';
-import hero2 from '../assets/hero2.webp';
-import hero3 from '../assets/hero3.webp';
-import hero4 from '../assets/hero4.webp';
+import hero1 from "../assets/hero1.webp";
+import hero2 from "../assets/hero2.webp";
+import hero3 from "../assets/hero3.webp";
+import hero4 from "../assets/hero4.webp";
 
 const carouselImages = [hero1, hero2, hero3, hero4];
 const Hero = () => {
-  return (
-    <div className=' grid grid-cols-1 lg:grid-cols-2 gap-24 items-center'>
-      <div>
-        <h1 className='max-w-2xl text-4xl font-bold tracking-tight  sm:text-6xl '>
-          We’re changing the way people shop.
-        </h1>
+	return (
+		<div className=" grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+			<div>
+				<h1 className="max-w-2xl text-4xl font-bold tracking-tight  sm:text-6xl ">
+					We’re changing the way people shop.
+				</h1>
 
-        <p className='mt-8 max-w-xl text-lg leading-8'>
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-          cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
-          aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-          qui lorem cupidatat commodo.
-        </p>
-        <div className='mt-10 '>
-          <Link to='products' className='btn btn-primary '>
-            Our Products
-          </Link>
-        </div>
-      </div>
-      <div className='hidden  h-[28rem] lg:carousel carousel-center   p-4 space-x-4 bg-neutral rounded-box'>
-        {carouselImages.map((image, index) => {
-          return (
-            <div key={image} className='carousel-item'>
-              <img
-                src={image}
-                className='rounded-box h-full w-80  object-cover'
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+				<p className="mt-8 max-w-xl text-lg leading-8">
+					Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
+					cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
+					aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
+					qui lorem cupidatat commodo.
+				</p>
+				<div className="mt-10 ">
+					<Link to="products" className="btn btn-primary ">
+						Our Products
+					</Link>
+				</div>
+			</div>
+			<div className="hidden  h-[28rem] lg:carousel carousel-center   p-4 space-x-4 bg-neutral rounded-box">
+				{carouselImages.map((image, index) => {
+					return (
+						<div key={image} className="carousel-item">
+							<img
+								src={image}
+								className="rounded-box h-full w-80  object-cover"
+							/>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
 };
 export default Hero;
 ```
@@ -1144,12 +1144,12 @@ export default Hero;
 ## Challenge (18) - Axios Custom Instance
 
 ```js
-import axios from 'axios';
+import axios from "axios";
 
-const productionUrl = 'https://strapi-store-server.onrender.com/api';
+const productionUrl = "https://strapi-store-server.onrender.com/api";
 
 export const customFetch = axios.create({
-  baseURL: productionUrl,
+	baseURL: productionUrl,
 });
 ```
 
@@ -1188,12 +1188,12 @@ export const customFetch = axios.create({
 ErrorElement.jsx
 
 ```js
-import { useRouteError } from 'react-router-dom';
+import { useRouteError } from "react-router-dom";
 const ErrorElement = () => {
-  const error = useRouteError();
-  console.log(error);
+	const error = useRouteError();
+	console.log(error);
 
-  return <h4 className='font-bold text-4xl'>there was an error... </h4>;
+	return <h4 className="font-bold text-4xl">there was an error... </h4>;
 };
 export default ErrorElement;
 ```
@@ -1201,49 +1201,49 @@ export default ErrorElement;
 App.jsx
 
 ```js
-import { ErrorElement } from './components';
+import { ErrorElement } from "./components";
 // loaders
-import { loader as landingLoader } from './pages/Landing';
+import { loader as landingLoader } from "./pages/Landing";
 // actions
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-        loader: landingLoader,
-        errorElement: ErrorElement,
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <HomeLayout />,
+		errorElement: <Error />,
+		children: [
+			{
+				index: true,
+				element: <Landing />,
+				loader: landingLoader,
+				errorElement: ErrorElement,
+			},
+		],
+	},
 ]);
 ```
 
 Landing.js
 
 ```js
-import { Hero } from '../components';
+import { Hero } from "../components";
 
-import { customFetch } from '../utils';
-const url = '/products?featured=true';
+import { customFetch } from "../utils";
+const url = "/products?featured=true";
 
 export const loader = async () => {
-  const response = await customFetch(url);
-  console.log(response);
-  const products = response.data.data;
-  return { products };
+	const response = await customFetch(url);
+	console.log(response);
+	const products = response.data.data;
+	return { products };
 };
 
 const Landing = () => {
-  return (
-    <>
-      <Hero />
-    </>
-  );
+	return (
+		<>
+			<Hero />
+		</>
+	);
 };
 export default Landing;
 ```
@@ -1332,11 +1332,11 @@ SectionTitle.jsx
 
 ```js
 const SectionTitle = ({ text }) => {
-  return (
-    <div className='border-b border-base-300 pb-5'>
-      <h2 className='text-3xl font-medium tracking-wider capitalize'>{text}</h2>
-    </div>
-  );
+	return (
+		<div className="border-b border-base-300 pb-5">
+			<h2 className="text-3xl font-medium tracking-wider capitalize">{text}</h2>
+		</div>
+	);
 };
 export default SectionTitle;
 ```
@@ -1344,15 +1344,15 @@ export default SectionTitle;
 FeaturedProducts.jsx
 
 ```js
-import ProductsGrid from './ProductsGrid';
-import SectionTitle from './SectionTitle';
+import ProductsGrid from "./ProductsGrid";
+import SectionTitle from "./SectionTitle";
 const FeaturedProducts = () => {
-  return (
-    <div className='pt-24 '>
-      <SectionTitle text='featured products' />
-      <ProductsGrid />
-    </div>
-  );
+	return (
+		<div className="pt-24 ">
+			<SectionTitle text="featured products" />
+			<ProductsGrid />
+		</div>
+	);
 };
 export default FeaturedProducts;
 ```
@@ -1360,37 +1360,37 @@ export default FeaturedProducts;
 ProductsGrid.jsx
 
 ```js
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from "react-router-dom";
 const ProductsGrid = () => {
-  const { products } = useLoaderData();
+	const { products } = useLoaderData();
 
-  return (
-    <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 '>
-      {products.map((product) => {
-        const { title, price, image } = product.attributes;
-        const dollarsAmount = price;
-        return (
-          <Link
-            key={product.id}
-            to={`/products/${product.id}`}
-            className='card w-full  shadow-xl hover:shadow-2xl transition duration-300 '
-          >
-            <figure className='px-4 pt-4'>
-              <img
-                src={image}
-                alt={title}
-                className='rounded-xl h-64 md:h-48 w-full object-cover'
-              />
-            </figure>
-            <div className='card-body items-center text-center'>
-              <h2 className='card-title capitalize tracking-wider'>{title}</h2>
-              <span className='text-secondary'>{dollarsAmount}</span>
-            </div>
-          </Link>
-        );
-      })}
-    </div>
-  );
+	return (
+		<div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 ">
+			{products.map((product) => {
+				const { title, price, image } = product.attributes;
+				const dollarsAmount = price;
+				return (
+					<Link
+						key={product.id}
+						to={`/products/${product.id}`}
+						className="card w-full  shadow-xl hover:shadow-2xl transition duration-300 "
+					>
+						<figure className="px-4 pt-4">
+							<img
+								src={image}
+								alt={title}
+								className="rounded-xl h-64 md:h-48 w-full object-cover"
+							/>
+						</figure>
+						<div className="card-body items-center text-center">
+							<h2 className="card-title capitalize tracking-wider">{title}</h2>
+							<span className="text-secondary">{dollarsAmount}</span>
+						</div>
+					</Link>
+				);
+			})}
+		</div>
+	);
 };
 export default ProductsGrid;
 ```
@@ -1408,11 +1408,11 @@ export default ProductsGrid;
 
 ```js
 export const formatPrice = (price) => {
-  const dollarsAmount = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format((price / 100).toFixed(2));
-  return dollarsAmount;
+	const dollarsAmount = new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+	}).format((price / 100).toFixed(2));
+	return dollarsAmount;
 };
 ```
 
@@ -1490,110 +1490,110 @@ export const formatPrice = (price) => {
 - import and setup loader in the App.jsx
 
 ```js
-import { useLoaderData } from 'react-router-dom';
-import { formatPrice, customFetch } from '../utils';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useLoaderData } from "react-router-dom";
+import { formatPrice, customFetch } from "../utils";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const loader = async ({ params }) => {
-  const response = await customFetch(`/products/${params.id}`);
-  return { product: response.data.data };
+	const response = await customFetch(`/products/${params.id}`);
+	return { product: response.data.data };
 };
 
 const SingleProduct = () => {
-  const { product } = useLoaderData();
-  const { image, title, price, description, colors, company } =
-    product.attributes;
-  const dollarsAmount = formatPrice(price);
-  const [productColor, setProductColor] = useState(colors[0]);
-  const [amount, setAmount] = useState(1);
+	const { product } = useLoaderData();
+	const { image, title, price, description, colors, company } =
+		product.attributes;
+	const dollarsAmount = formatPrice(price);
+	const [productColor, setProductColor] = useState(colors[0]);
+	const [amount, setAmount] = useState(1);
 
-  const handleAmount = (e) => {
-    setAmount(parseInt(e.target.value));
-  };
+	const handleAmount = (e) => {
+		setAmount(parseInt(e.target.value));
+	};
 
-  return (
-    <section>
-      <div className='text-md breadcrumbs'>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/products'>Products</Link>
-          </li>
-        </ul>
-      </div>
-      {/* PRODUCT */}
-      <div className='mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16'>
-        {/* IMAGE */}
-        <img
-          src={image}
-          alt={title}
-          className='w-96 h-96 object-cover rounded-lg lg:w-full  '
-        />
-        {/* PRODUCT INFO */}
-        <div>
-          <h1 className='capitalize text-3xl font-bold'>{title}</h1>
-          <h4 className='text-xl text-neutral-content font-bold mt-2'>
-            {company}
-          </h4>
+	return (
+		<section>
+			<div className="text-md breadcrumbs">
+				<ul>
+					<li>
+						<Link to="/">Home</Link>
+					</li>
+					<li>
+						<Link to="/products">Products</Link>
+					</li>
+				</ul>
+			</div>
+			{/* PRODUCT */}
+			<div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
+				{/* IMAGE */}
+				<img
+					src={image}
+					alt={title}
+					className="w-96 h-96 object-cover rounded-lg lg:w-full  "
+				/>
+				{/* PRODUCT INFO */}
+				<div>
+					<h1 className="capitalize text-3xl font-bold">{title}</h1>
+					<h4 className="text-xl text-neutral-content font-bold mt-2">
+						{company}
+					</h4>
 
-          <p className='mt-3 text-xl'>{dollarsAmount}</p>
+					<p className="mt-3 text-xl">{dollarsAmount}</p>
 
-          <p className='mt-6 leading-8'>{description}</p>
+					<p className="mt-6 leading-8">{description}</p>
 
-          {/* COLORS */}
-          <div className='mt-6'>
-            <h4 className='text-md font-medium tracking-wider capitalize'>
-              colors
-            </h4>
-            <div className='mt-2'>
-              {colors.map((color) => {
-                return (
-                  <button
-                    key={color}
-                    type='button'
-                    className={`badge  w-6 h-6 mr-2  ${
-                      color === productColor && 'border-2 border-secondary'
-                    }`}
-                    style={{ backgroundColor: color }}
-                    onClick={() => setProductColor(color)}
-                  ></button>
-                );
-              })}
-            </div>
-          </div>
-          {/* AMOUNT */}
-          <div className='form-control w-full max-w-xs'>
-            <label className='label'>
-              <h4 className='text-md font-medium tracking-wider capitalize'>
-                amount
-              </h4>
-            </label>
-            <select
-              className='select select-secondary select-bordered select-md'
-              value={amount}
-              onChange={handleAmount}
-            >
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-            </select>
-          </div>
-          {/* CART BUTTON */}
-          <div className='mt-10 '>
-            <button
-              className='btn btn-secondary btn-md'
-              onClick={() => console.log('add to bag')}
-            >
-              Add to bag
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+					{/* COLORS */}
+					<div className="mt-6">
+						<h4 className="text-md font-medium tracking-wider capitalize">
+							colors
+						</h4>
+						<div className="mt-2">
+							{colors.map((color) => {
+								return (
+									<button
+										key={color}
+										type="button"
+										className={`badge  w-6 h-6 mr-2  ${
+											color === productColor && "border-2 border-secondary"
+										}`}
+										style={{ backgroundColor: color }}
+										onClick={() => setProductColor(color)}
+									></button>
+								);
+							})}
+						</div>
+					</div>
+					{/* AMOUNT */}
+					<div className="form-control w-full max-w-xs">
+						<label className="label">
+							<h4 className="text-md font-medium tracking-wider capitalize">
+								amount
+							</h4>
+						</label>
+						<select
+							className="select select-secondary select-bordered select-md"
+							value={amount}
+							onChange={handleAmount}
+						>
+							<option value={1}>1</option>
+							<option value={2}>2</option>
+							<option value={3}>3</option>
+						</select>
+					</div>
+					{/* CART BUTTON */}
+					<div className="mt-10 ">
+						<button
+							className="btn btn-secondary btn-md"
+							onClick={() => console.log("add to bag")}
+						>
+							Add to bag
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 };
 export default SingleProduct;
 ```
@@ -1606,15 +1606,15 @@ index.jsx
 
 ```js
 export const generateAmountOptions = (number) => {
-  return Array.from({ length: number }, (_, index) => {
-    const amount = index + 1;
+	return Array.from({ length: number }, (_, index) => {
+		const amount = index + 1;
 
-    return (
-      <option key={amount} value={amount}>
-        {amount}
-      </option>
-    );
-  });
+		return (
+			<option key={amount} value={amount}>
+				{amount}
+			</option>
+		);
+	});
 };
 ```
 
@@ -1674,26 +1674,26 @@ const amount = index + 1;: Inside the callback function, this line calculates th
 Products.jsx
 
 ```js
-import { Filters, PaginationContainer, ProductsContainer } from '../components';
-import { customFetch } from '../utils';
+import { Filters, PaginationContainer, ProductsContainer } from "../components";
+import { customFetch } from "../utils";
 
-const url = '/products';
+const url = "/products";
 export const loader = async ({ request }) => {
-  const response = await customFetch(url);
+	const response = await customFetch(url);
 
-  const products = response.data.data;
-  const meta = response.data.meta;
-  return { products, meta };
+	const products = response.data.data;
+	const meta = response.data.meta;
+	return { products, meta };
 };
 
 const Products = () => {
-  return (
-    <>
-      <Filters />
-      <ProductsContainer />
-      <PaginationContainer />
-    </>
-  );
+	return (
+		<>
+			<Filters />
+			<ProductsContainer />
+			<PaginationContainer />
+		</>
+	);
 };
 export default Products;
 ```
@@ -1801,45 +1801,45 @@ export default Products;
 ProductsList.jsx
 
 ```js
-import { formatPrice } from '../utils';
-import { Link, useLoaderData } from 'react-router-dom';
+import { formatPrice } from "../utils";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ProductList = () => {
-  const { products } = useLoaderData();
-  return (
-    <div className='mt-12 grid gap-y-8'>
-      {products.map((product) => {
-        const { title, price, image, company } = product.attributes;
-        const dollarsAmount = formatPrice(price);
+	const { products } = useLoaderData();
+	return (
+		<div className="mt-12 grid gap-y-8">
+			{products.map((product) => {
+				const { title, price, image, company } = product.attributes;
+				const dollarsAmount = formatPrice(price);
 
-        return (
-          <Link
-            key={product.id}
-            to={`/products/${product.id}`}
-            className='p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap bg-base-100 shadow-xl hover:shadow-2xl duration-300 group'
-          >
-            <img
-              src={image}
-              alt={title}
-              className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300'
-            />
-            <div className='ml-0 sm:ml-16'>
-              <h3 className='capitalize font-medium text-lg'>{title}</h3>
-              <h4 className='capitalize text-md text-neutral-content'>
-                {company}
-              </h4>
+				return (
+					<Link
+						key={product.id}
+						to={`/products/${product.id}`}
+						className="p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap bg-base-100 shadow-xl hover:shadow-2xl duration-300 group"
+					>
+						<img
+							src={image}
+							alt={title}
+							className="h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300"
+						/>
+						<div className="ml-0 sm:ml-16">
+							<h3 className="capitalize font-medium text-lg">{title}</h3>
+							<h4 className="capitalize text-md text-neutral-content">
+								{company}
+							</h4>
 
-              {/* COLOR */}
-            </div>
+							{/* COLOR */}
+						</div>
 
-            <p className='font-medium ml-0 sm:ml-auto text-lg'>
-              {dollarsAmount}
-            </p>
-          </Link>
-        );
-      })}
-    </div>
-  );
+						<p className="font-medium ml-0 sm:ml-auto text-lg">
+							{dollarsAmount}
+						</p>
+					</Link>
+				);
+			})}
+		</div>
+	);
 };
 
 export default ProductList;
@@ -1848,63 +1848,63 @@ export default ProductList;
 ProductsContainer.jsx
 
 ```js
-import { useLoaderData } from 'react-router-dom';
-import ProductsGrid from './ProductsGrid';
-import ProductsList from './ProductsList';
-import { useState } from 'react';
-import { BsFillGridFill, BsList } from 'react-icons/bs';
+import { useLoaderData } from "react-router-dom";
+import ProductsGrid from "./ProductsGrid";
+import ProductsList from "./ProductsList";
+import { useState } from "react";
+import { BsFillGridFill, BsList } from "react-icons/bs";
 
 const ProductsContainer = () => {
-  const { meta } = useLoaderData();
-  const totalProducts = meta.pagination.total;
-  const [layout, setLayout] = useState('grid');
+	const { meta } = useLoaderData();
+	const totalProducts = meta.pagination.total;
+	const [layout, setLayout] = useState("grid");
 
-  const setActiveStyles = (pattern) => {
-    return `text-xl btn btn-circle btn-sm ${
-      pattern === layout
-        ? 'btn-primary text-primary-content'
-        : 'btn-ghost text-base-content'
-    }`;
-  };
+	const setActiveStyles = (pattern) => {
+		return `text-xl btn btn-circle btn-sm ${
+			pattern === layout
+				? "btn-primary text-primary-content"
+				: "btn-ghost text-base-content"
+		}`;
+	};
 
-  return (
-    <>
-      {/* HEADER */}
-      <div className='flex justify-between items-center mt-8 border-b border-base-300 pb-5'>
-        <h4 className='font-medium text-md'>
-          {totalProducts} product{totalProducts > 1 && 's'}
-        </h4>
-        <div className='flex gap-x-2'>
-          <button
-            onClick={() => setLayout('grid')}
-            className={setActiveStyles('grid')}
-          >
-            <BsFillGridFill />
-          </button>
+	return (
+		<>
+			{/* HEADER */}
+			<div className="flex justify-between items-center mt-8 border-b border-base-300 pb-5">
+				<h4 className="font-medium text-md">
+					{totalProducts} product{totalProducts > 1 && "s"}
+				</h4>
+				<div className="flex gap-x-2">
+					<button
+						onClick={() => setLayout("grid")}
+						className={setActiveStyles("grid")}
+					>
+						<BsFillGridFill />
+					</button>
 
-          <button
-            onClick={() => setLayout('list')}
-            className={setActiveStyles('list')}
-          >
-            <BsList />
-          </button>
-        </div>
-      </div>
+					<button
+						onClick={() => setLayout("list")}
+						className={setActiveStyles("list")}
+					>
+						<BsList />
+					</button>
+				</div>
+			</div>
 
-      {/* PRODUCTS */}
-      <div>
-        {totalProducts === 0 ? (
-          <h5 className='text-2xl mt-16'>
-            Sorry, no products matched your search...
-          </h5>
-        ) : layout === 'grid' ? (
-          <ProductsGrid />
-        ) : (
-          <ProductsList />
-        )}
-      </div>
-    </>
-  );
+			{/* PRODUCTS */}
+			<div>
+				{totalProducts === 0 ? (
+					<h5 className="text-2xl mt-16">
+						Sorry, no products matched your search...
+					</h5>
+				) : layout === "grid" ? (
+					<ProductsGrid />
+				) : (
+					<ProductsList />
+				)}
+			</div>
+		</>
+	);
 };
 
 export default ProductsContainer;
@@ -1921,19 +1921,19 @@ FormInput.jsx
 
 ```js
 const FormInput = ({ label, name, type, defaultValue, size }) => {
-  return (
-    <div className='form-control'>
-      <label htmlFor={name} className='label'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <input
-        type={type}
-        name={name}
-        defaultValue={defaultValue}
-        className={`input input-bordered ${size}`}
-      />
-    </div>
-  );
+	return (
+		<div className="form-control">
+			<label htmlFor={name} className="label">
+				<span className="label-text capitalize">{label}</span>
+			</label>
+			<input
+				type={type}
+				name={name}
+				defaultValue={defaultValue}
+				className={`input input-bordered ${size}`}
+			/>
+		</div>
+	);
 };
 export default FormInput;
 ```
@@ -1941,28 +1941,28 @@ export default FormInput;
 Filters.jsx
 
 ```js
-import { Form, useLoaderData, Link } from 'react-router-dom';
-import FormInput from './FormInput';
+import { Form, useLoaderData, Link } from "react-router-dom";
+import FormInput from "./FormInput";
 
 const Filters = () => {
-  return (
-    <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
-      {/* SEARCH */}
-      <FormInput
-        type='search'
-        label='search product'
-        name='search'
-        size='input-sm'
-      />
-      {/* BUTTONS */}
-      <button type='submit' className='btn btn-primary btn-sm '>
-        search
-      </button>
-      <Link to='/products' className='btn btn-accent btn-sm'>
-        reset
-      </Link>
-    </Form>
-  );
+	return (
+		<Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
+			{/* SEARCH */}
+			<FormInput
+				type="search"
+				label="search product"
+				name="search"
+				size="input-sm"
+			/>
+			{/* BUTTONS */}
+			<button type="submit" className="btn btn-primary btn-sm ">
+				search
+			</button>
+			<Link to="/products" className="btn btn-accent btn-sm">
+				reset
+			</Link>
+		</Form>
+	);
 };
 export default Filters;
 ```
@@ -2013,27 +2013,27 @@ FormSelect.jsx
 
 ```js
 const FormSelect = ({ label, name, list, defaultValue, size }) => {
-  return (
-    <div className='form-control'>
-      <label htmlFor={name} className='label'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <select
-        name={name}
-        id={name}
-        className={`select select-bordered ${size}`}
-        defaultValue={defaultValue}
-      >
-        {list.map((item) => {
-          return (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
-    </div>
-  );
+	return (
+		<div className="form-control">
+			<label htmlFor={name} className="label">
+				<span className="label-text capitalize">{label}</span>
+			</label>
+			<select
+				name={name}
+				id={name}
+				className={`select select-bordered ${size}`}
+				defaultValue={defaultValue}
+			>
+				{list.map((item) => {
+					return (
+						<option key={item} value={item}>
+							{item}
+						</option>
+					);
+				})}
+			</select>
+		</div>
+	);
 };
 export default FormSelect;
 ```
@@ -2044,31 +2044,31 @@ Filters.jsx
 const { meta } = useLoaderData();
 
 {
-  /* CATEGORIES */
+	/* CATEGORIES */
 }
 <FormSelect
-  label='select category'
-  name='category'
-  list={meta.categories}
-  size='select-sm'
+	label="select category"
+	name="category"
+	list={meta.categories}
+	size="select-sm"
 />;
 {
-  /* COMPANIES */
+	/* COMPANIES */
 }
 <FormSelect
-  label='select company'
-  name='company'
-  list={meta.companies}
-  size='select-sm'
+	label="select company"
+	name="company"
+	list={meta.companies}
+	size="select-sm"
 />;
 {
-  /* ORDER */
+	/* ORDER */
 }
 <FormSelect
-  label='sort by'
-  name='order'
-  list={['a-z', 'z-a', 'high', 'low']}
-  size='select-sm'
+	label="sort by"
+	name="order"
+	list={["a-z", "z-a", "high", "low"]}
+	size="select-sm"
 />;
 ```
 
@@ -2120,35 +2120,35 @@ const { meta } = useLoaderData();
 FormRange.jsx
 
 ```js
-import { formatPrice } from '../utils';
-import { useState } from 'react';
+import { formatPrice } from "../utils";
+import { useState } from "react";
 const FormRange = ({ label, name, size }) => {
-  const step = 1000;
-  const maxPrice = 100000;
-  const [selectedPrice, setSelectedPrice] = useState(maxPrice);
+	const step = 1000;
+	const maxPrice = 100000;
+	const [selectedPrice, setSelectedPrice] = useState(maxPrice);
 
-  return (
-    <div className='form-control'>
-      <label htmlFor={name} className='label cursor-pointer'>
-        <span className='label-text capitalize'>{label}</span>
-        <span>{formatPrice(selectedPrice)}</span>
-      </label>
-      <input
-        type='range'
-        name={name}
-        min={0}
-        max={maxPrice}
-        value={selectedPrice}
-        onChange={(e) => setSelectedPrice(e.target.value)}
-        className={`range range-primary ${size}`}
-        step={step}
-      />
-      <div className='w-full flex justify-between text-xs px-2 mt-2'>
-        <span className='font-bold text-md'>0</span>
-        <span className='font-bold text-md'>Max : {formatPrice(maxPrice)}</span>
-      </div>
-    </div>
-  );
+	return (
+		<div className="form-control">
+			<label htmlFor={name} className="label cursor-pointer">
+				<span className="label-text capitalize">{label}</span>
+				<span>{formatPrice(selectedPrice)}</span>
+			</label>
+			<input
+				type="range"
+				name={name}
+				min={0}
+				max={maxPrice}
+				value={selectedPrice}
+				onChange={(e) => setSelectedPrice(e.target.value)}
+				className={`range range-primary ${size}`}
+				step={step}
+			/>
+			<div className="w-full flex justify-between text-xs px-2 mt-2">
+				<span className="font-bold text-md">0</span>
+				<span className="font-bold text-md">Max : {formatPrice(maxPrice)}</span>
+			</div>
+		</div>
+	);
 };
 export default FormRange;
 ```
@@ -2157,9 +2157,9 @@ Filters.jsx
 
 ```js
 {
-  /* PRICE */
+	/* PRICE */
 }
-<FormRange label='select price' name='price' size='range-sm' />;
+<FormRange label="select price" name="price" size="range-sm" />;
 ```
 
 ## Challenge (28) - Filters (Shipping)
@@ -2205,19 +2205,19 @@ FormCheckbox.jsx
 
 ```js
 const FormCheckbox = ({ label, name, defaultValue, size }) => {
-  return (
-    <div className='form-control items-center'>
-      <label htmlFor={name} className='label cursor-pointer'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <input
-        type='checkbox'
-        name={name}
-        defaultChecked={defaultValue}
-        className={`checkbox checkbox-primary ${size}`}
-      />
-    </div>
-  );
+	return (
+		<div className="form-control items-center">
+			<label htmlFor={name} className="label cursor-pointer">
+				<span className="label-text capitalize">{label}</span>
+			</label>
+			<input
+				type="checkbox"
+				name={name}
+				defaultChecked={defaultValue}
+				className={`checkbox checkbox-primary ${size}`}
+			/>
+		</div>
+	);
 };
 export default FormCheckbox;
 ```
@@ -2226,9 +2226,9 @@ Filters.jsx
 
 ```js
 {
-  /* SHIPPING */
+	/* SHIPPING */
 }
-<FormCheckbox label='free shipping' name='shipping' size='checkbox-sm' />;
+<FormCheckbox label="free shipping" name="shipping" size="checkbox-sm" />;
 ```
 
 ## Challenge (29) - Global Loading
@@ -2302,34 +2302,34 @@ Loading.jsx
 
 ```js
 const Loading = () => {
-  return (
-    <div className='h-screen flex items-center justify-center'>
-      <span className='loading loading-ring loading-lg' />
-    </div>
-  );
+	return (
+		<div className="h-screen flex items-center justify-center">
+			<span className="loading loading-ring loading-lg" />
+		</div>
+	);
 };
 export default Loading;
 ```
 
 ```js
-import { Outlet, useNavigation } from 'react-router-dom';
-import { Navbar, Loading, Header } from '../components';
+import { Outlet, useNavigation } from "react-router-dom";
+import { Navbar, Loading, Header } from "../components";
 const HomeLayout = () => {
-  const navigation = useNavigation();
-  const isPageLoading = navigation.state === 'loading';
-  return (
-    <>
-      <Header />
-      <Navbar />
-      {isPageLoading ? (
-        <Loading />
-      ) : (
-        <section className='align-element py-20'>
-          <Outlet />
-        </section>
-      )}
-    </>
-  );
+	const navigation = useNavigation();
+	const isPageLoading = navigation.state === "loading";
+	return (
+		<>
+			<Header />
+			<Navbar />
+			{isPageLoading ? (
+				<Loading />
+			) : (
+				<section className="align-element py-20">
+					<Outlet />
+				</section>
+			)}
+		</>
+	);
 };
 export default HomeLayout;
 ```
@@ -2351,93 +2351,93 @@ Products.jsx
 
 ```js
 export const loader = async ({ request }) => {
-  const params = Object.fromEntries([
-    ...new URL(request.url).searchParams.entries(),
-  ]);
-  const response = await customFetch(url, { params });
+	const params = Object.fromEntries([
+		...new URL(request.url).searchParams.entries(),
+	]);
+	const response = await customFetch(url, { params });
 
-  const products = response.data.data;
-  const meta = response.data.meta;
+	const products = response.data.data;
+	const meta = response.data.meta;
 
-  return { products, meta, params };
+	return { products, meta, params };
 };
 ```
 
 Filters.jsx
 
 ```js
-import { Form, useLoaderData, Link } from 'react-router-dom';
-import FormInput from './FormInput';
-import FormSelect from './FormSelect';
-import FormRange from './FormRange';
-import FormCheckbox from './FormCheckbox';
+import { Form, useLoaderData, Link } from "react-router-dom";
+import FormInput from "./FormInput";
+import FormSelect from "./FormSelect";
+import FormRange from "./FormRange";
+import FormCheckbox from "./FormCheckbox";
 const Filters = () => {
-  const { meta, params } = useLoaderData();
-  const { search, company, category, shipping, order, price } = params;
-  return (
-    <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
-      {/* SEARCH */}
-      <FormInput
-        type='search'
-        label='search product'
-        name='search'
-        defaultValue={search}
-        size='input-sm'
-      />
-      {/* CATEGORIES */}
-      <FormSelect
-        label='select category'
-        name='category'
-        list={meta.categories}
-        defaultValue={category}
-        size='select-sm'
-      />
-      {/* COMPANIES */}
-      <FormSelect
-        label='select company'
-        name='company'
-        list={meta.companies}
-        defaultValue={company}
-        size='select-sm'
-      />
-      {/* ORDER */}
-      <FormSelect
-        label='sort by'
-        name='order'
-        list={['a-z', 'z-a', 'high', 'low']}
-        defaultValue={order}
-        size='select-sm'
-      />
-      {/* PRICE */}
-      <FormRange
-        label='select price'
-        name='price'
-        price={price}
-        size='range-sm'
-      />
-      {/* SHIPPING */}
-      <FormCheckbox
-        label='free shipping'
-        name='shipping'
-        defaultValue={shipping}
-        size='checkbox-sm'
-      />
-      {/* BUTTONS */}
-      <button type='submit' className='btn btn-primary btn-sm'>
-        search
-      </button>
-      <Link to='/products' className='btn btn-accent btn-sm'>
-        reset
-      </Link>
-    </Form>
-  );
+	const { meta, params } = useLoaderData();
+	const { search, company, category, shipping, order, price } = params;
+	return (
+		<Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
+			{/* SEARCH */}
+			<FormInput
+				type="search"
+				label="search product"
+				name="search"
+				defaultValue={search}
+				size="input-sm"
+			/>
+			{/* CATEGORIES */}
+			<FormSelect
+				label="select category"
+				name="category"
+				list={meta.categories}
+				defaultValue={category}
+				size="select-sm"
+			/>
+			{/* COMPANIES */}
+			<FormSelect
+				label="select company"
+				name="company"
+				list={meta.companies}
+				defaultValue={company}
+				size="select-sm"
+			/>
+			{/* ORDER */}
+			<FormSelect
+				label="sort by"
+				name="order"
+				list={["a-z", "z-a", "high", "low"]}
+				defaultValue={order}
+				size="select-sm"
+			/>
+			{/* PRICE */}
+			<FormRange
+				label="select price"
+				name="price"
+				price={price}
+				size="range-sm"
+			/>
+			{/* SHIPPING */}
+			<FormCheckbox
+				label="free shipping"
+				name="shipping"
+				defaultValue={shipping}
+				size="checkbox-sm"
+			/>
+			{/* BUTTONS */}
+			<button type="submit" className="btn btn-primary btn-sm">
+				search
+			</button>
+			<Link to="/products" className="btn btn-accent btn-sm">
+				reset
+			</Link>
+		</Form>
+	);
 };
 export default Filters;
 ```
 
 ```js
 const params = Object.fromEntries([
-  ...new URL(request.url).searchParams.entries(),
+	...new URL(request.url).searchParams.entries(),
 ]);
 ```
 
@@ -2513,64 +2513,64 @@ It uses Object.fromEntries() to create a new object where the key-value pairs be
 PaginationContainer.jsx
 
 ```js
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 const PaginationContainer = () => {
-  const { meta } = useLoaderData();
-  const { pageCount, page } = meta.pagination;
-  const pages = Array.from({ length: pageCount }, (_, index) => {
-    return index + 1;
-  });
-  const { search, pathname } = useLocation();
-  const navigate = useNavigate();
+	const { meta } = useLoaderData();
+	const { pageCount, page } = meta.pagination;
+	const pages = Array.from({ length: pageCount }, (_, index) => {
+		return index + 1;
+	});
+	const { search, pathname } = useLocation();
+	const navigate = useNavigate();
 
-  const handlePageChange = (pageNumber) => {
-    const searchParams = new URLSearchParams(search);
-    searchParams.set('page', pageNumber);
-    navigate(`${pathname}?${searchParams.toString()}`);
-  };
+	const handlePageChange = (pageNumber) => {
+		const searchParams = new URLSearchParams(search);
+		searchParams.set("page", pageNumber);
+		navigate(`${pathname}?${searchParams.toString()}`);
+	};
 
-  if (pageCount < 2) return null;
+	if (pageCount < 2) return null;
 
-  return (
-    <div className='mt-16 flex justify-end'>
-      <div className='join'>
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let prevPage = page - 1;
-            if (prevPage < 1) prevPage = pageCount;
-            handlePageChange(prevPage);
-          }}
-        >
-          Prev
-        </button>
-        {pages.map((pageNumber) => {
-          return (
-            <button
-              onClick={() => handlePageChange(pageNumber)}
-              key={pageNumber}
-              className={`btn btn-xs sm:btn-md border-none join-item ${
-                pageNumber === page ? 'bg-base-300 border-base-300' : ''
-              }`}
-            >
-              {pageNumber}
-            </button>
-          );
-        })}
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let nextPage = page + 1;
-            if (nextPage > pageCount) nextPage = 1;
-            handlePageChange(nextPage);
-          }}
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  );
+	return (
+		<div className="mt-16 flex justify-end">
+			<div className="join">
+				<button
+					className="btn btn-xs sm:btn-md join-item"
+					onClick={() => {
+						let prevPage = page - 1;
+						if (prevPage < 1) prevPage = pageCount;
+						handlePageChange(prevPage);
+					}}
+				>
+					Prev
+				</button>
+				{pages.map((pageNumber) => {
+					return (
+						<button
+							onClick={() => handlePageChange(pageNumber)}
+							key={pageNumber}
+							className={`btn btn-xs sm:btn-md border-none join-item ${
+								pageNumber === page ? "bg-base-300 border-base-300" : ""
+							}`}
+						>
+							{pageNumber}
+						</button>
+					);
+				})}
+				<button
+					className="btn btn-xs sm:btn-md join-item"
+					onClick={() => {
+						let nextPage = page + 1;
+						if (nextPage > pageCount) nextPage = 1;
+						handlePageChange(nextPage);
+					}}
+				>
+					Next
+				</button>
+			</div>
+		</div>
+	);
 };
 export default PaginationContainer;
 ```
@@ -2629,30 +2629,30 @@ export default PaginationContainer;
 features/cart/cartSlice.js
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const defaultState = {
-  cartItems: [],
-  numItemsInCart: 0,
-  cartTotal: 0,
-  shipping: 500,
-  tax: 0,
-  orderTotal: 0,
+	cartItems: [],
+	numItemsInCart: 0,
+	cartTotal: 0,
+	shipping: 500,
+	tax: 0,
+	orderTotal: 0,
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
-  initialState: defaultState,
-  reducers: {
-    addItem: (state, action) => {
-      console.log(action.payload);
-    },
-    clearCart: (state) => {},
+	name: "cart",
+	initialState: defaultState,
+	reducers: {
+		addItem: (state, action) => {
+			console.log(action.payload);
+		},
+		clearCart: (state) => {},
 
-    removeItem: (state, action) => {},
-    editItem: (state, action) => {},
-  },
+		removeItem: (state, action) => {},
+		editItem: (state, action) => {},
+	},
 });
 
 export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
@@ -2663,34 +2663,34 @@ export default cartSlice.reducer;
 store.js
 
 ```js
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
-import cartReducer from './features/cart/cartSlice';
+import cartReducer from "./features/cart/cartSlice";
 export const store = configureStore({
-  reducer: {
-    cartState: cartReducer,
-  },
+	reducer: {
+		cartState: cartReducer,
+	},
 });
 ```
 
 main.jsx
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "react-toastify/dist/ReactToastify.css";
 // order
-import './index.css';
+import "./index.css";
 
-import { ToastContainer } from 'react-toastify';
-import { store } from './store';
-import { Provider } from 'react-redux';
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <App />
-    <ToastContainer position='top-center' />
-  </Provider>
+import { ToastContainer } from "react-toastify";
+import { store } from "./store";
+import { Provider } from "react-redux";
+ReactDOM.createRoot(document.getElementById("root")).render(
+	<Provider store={store}>
+		<App />
+		<ToastContainer position="top-center" />
+	</Provider>
 );
 ```
 
@@ -2704,35 +2704,35 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 SingleProduct.jsx
 
 ```js
-import { useDispatch } from 'react-redux';
-import { addItem } from '../features/cart/cartSlice';
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cart/cartSlice";
 const SingleProduct = () => {
-  const dispatch = useDispatch();
-  const cartProduct = {
-    cartID: product.id + productColor,
-    productID: product.id,
-    image,
-    title,
-    price,
-    amount,
-    productColor,
-    company,
-  };
+	const dispatch = useDispatch();
+	const cartProduct = {
+		cartID: product.id + productColor,
+		productID: product.id,
+		image,
+		title,
+		price,
+		amount,
+		productColor,
+		company,
+	};
 
-  const addToCart = () => {
-    dispatch(addItem({ product: cartProduct }));
-  };
-  return (
-    <section>
-      ....
-      {/* CART BUTTON */}
-      <div className='mt-10 '>
-        <button className='btn btn-secondary btn-md' onClick={addToCart}>
-          Add to bag
-        </button>
-      </div>
-    </section>
-  );
+	const addToCart = () => {
+		dispatch(addItem({ product: cartProduct }));
+	};
+	return (
+		<section>
+			....
+			{/* CART BUTTON */}
+			<div className="mt-10 ">
+				<button className="btn btn-secondary btn-md" onClick={addToCart}>
+					Add to bag
+				</button>
+			</div>
+		</section>
+	);
 };
 ```
 
@@ -2785,7 +2785,7 @@ const SingleProduct = () => {
 Navbar.jsx
 
 ```js
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 ```
 
@@ -2835,51 +2835,51 @@ cartSlice.js
 ## Solution (35) - Refactor and Setup Local Storage
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const defaultState = {
-  cartItems: [],
-  numItemsInCart: 0,
-  cartTotal: 0,
-  shipping: 500,
-  tax: 0,
-  orderTotal: 0,
+	cartItems: [],
+	numItemsInCart: 0,
+	cartTotal: 0,
+	shipping: 500,
+	tax: 0,
+	orderTotal: 0,
 };
 
 const getCartFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('cart')) || defaultState;
+	return JSON.parse(localStorage.getItem("cart")) || defaultState;
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
-  initialState: getCartFromLocalStorage(),
-  reducers: {
-    addItem: (state, action) => {
-      const { product } = action.payload;
+	name: "cart",
+	initialState: getCartFromLocalStorage(),
+	reducers: {
+		addItem: (state, action) => {
+			const { product } = action.payload;
 
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
-      if (item) {
-        item.amount += product.amount;
-      } else {
-        state.cartItems.push(product);
-      }
-      state.numItemsInCart += product.amount;
-      state.cartTotal += product.price * product.amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.success('item added to cart');
-    },
-    clearCart: (state) => {},
+			const item = state.cartItems.find((i) => i.cartID === product.cartID);
+			if (item) {
+				item.amount += product.amount;
+			} else {
+				state.cartItems.push(product);
+			}
+			state.numItemsInCart += product.amount;
+			state.cartTotal += product.price * product.amount;
+			cartSlice.caseReducers.calculateTotals(state);
+			toast.success("item added to cart");
+		},
+		clearCart: (state) => {},
 
-    removeItem: (state, action) => {},
-    editItem: (state, action) => {},
+		removeItem: (state, action) => {},
+		editItem: (state, action) => {},
 
-    calculateTotals: (state) => {
-      state.tax = 0.1 * state.cartTotal;
-      state.orderTotal = state.cartTotal + state.shipping + state.tax;
-      localStorage.setItem('cart', JSON.stringify(state));
-    },
-  },
+		calculateTotals: (state) => {
+			state.tax = 0.1 * state.cartTotal;
+			state.orderTotal = state.cartTotal + state.shipping + state.tax;
+			localStorage.setItem("cart", JSON.stringify(state));
+		},
+	},
 });
 
 export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
@@ -2963,71 +2963,71 @@ export default cartSlice.reducer;
 ## Solution (36) - Clear Cart, Remove Item and Edit Item
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const defaultState = {
-  cartItems: [],
-  numItemsInCart: 0,
-  cartTotal: 0,
-  shipping: 500,
-  tax: 0,
-  orderTotal: 0,
+	cartItems: [],
+	numItemsInCart: 0,
+	cartTotal: 0,
+	shipping: 500,
+	tax: 0,
+	orderTotal: 0,
 };
 
 const getCartFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('cart')) || defaultState;
+	return JSON.parse(localStorage.getItem("cart")) || defaultState;
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
-  initialState: getCartFromLocalStorage(),
-  reducers: {
-    addItem: (state, action) => {
-      const { product } = action.payload;
+	name: "cart",
+	initialState: getCartFromLocalStorage(),
+	reducers: {
+		addItem: (state, action) => {
+			const { product } = action.payload;
 
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
-      if (item) {
-        item.amount += product.amount;
-      } else {
-        state.cartItems.push(product);
-      }
-      state.numItemsInCart += product.amount;
-      state.cartTotal += product.price * product.amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.success('item added to cart');
-    },
-    clearCart: (state) => {
-      localStorage.setItem('cart', JSON.stringify(defaultState));
-      return defaultState;
-    },
+			const item = state.cartItems.find((i) => i.cartID === product.cartID);
+			if (item) {
+				item.amount += product.amount;
+			} else {
+				state.cartItems.push(product);
+			}
+			state.numItemsInCart += product.amount;
+			state.cartTotal += product.price * product.amount;
+			cartSlice.caseReducers.calculateTotals(state);
+			toast.success("item added to cart");
+		},
+		clearCart: (state) => {
+			localStorage.setItem("cart", JSON.stringify(defaultState));
+			return defaultState;
+		},
 
-    removeItem: (state, action) => {
-      const { cartID } = action.payload;
-      const product = state.cartItems.find((i) => i.cartID === cartID);
-      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
+		removeItem: (state, action) => {
+			const { cartID } = action.payload;
+			const product = state.cartItems.find((i) => i.cartID === cartID);
+			state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
 
-      state.numItemsInCart -= product.amount;
-      state.cartTotal -= product.price * product.amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.error('Item removed from cart');
-    },
-    editItem: (state, action) => {
-      const { cartID, amount } = action.payload;
-      const item = state.cartItems.find((i) => i.cartID === cartID);
-      state.numItemsInCart += amount - item.amount;
-      state.cartTotal += item.price * (amount - item.amount);
-      item.amount = amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.success('Cart updated');
-    },
+			state.numItemsInCart -= product.amount;
+			state.cartTotal -= product.price * product.amount;
+			cartSlice.caseReducers.calculateTotals(state);
+			toast.error("Item removed from cart");
+		},
+		editItem: (state, action) => {
+			const { cartID, amount } = action.payload;
+			const item = state.cartItems.find((i) => i.cartID === cartID);
+			state.numItemsInCart += amount - item.amount;
+			state.cartTotal += item.price * (amount - item.amount);
+			item.amount = amount;
+			cartSlice.caseReducers.calculateTotals(state);
+			toast.success("Cart updated");
+		},
 
-    calculateTotals: (state) => {
-      state.tax = 0.1 * state.cartTotal;
-      state.orderTotal = state.cartTotal + state.shipping + state.tax;
-      localStorage.setItem('cart', JSON.stringify(state));
-    },
-  },
+		calculateTotals: (state) => {
+			state.tax = 0.1 * state.cartTotal;
+			state.orderTotal = state.cartTotal + state.shipping + state.tax;
+			localStorage.setItem("cart", JSON.stringify(state));
+		},
+	},
 });
 
 export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
@@ -3103,39 +3103,39 @@ If amount is greater than item.amount, it means more items are being added, so t
 pages/Cart.jsx
 
 ```js
-import { useSelector } from 'react-redux';
-import { CartItemsList, SectionTitle, CartTotals } from '../components';
-import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { CartItemsList, SectionTitle, CartTotals } from "../components";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  // temp
-  const user = null;
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
-  if (numItemsInCart === 0) {
-    return <SectionTitle text='Your cart is empty' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Shopping Cart' />
-      <div className='mt-8 grid gap-8  lg:grid-cols-12'>
-        <div className='lg:col-span-8'>
-          <CartItemsList />
-        </div>
-        <div className='lg:col-span-4 lg:pl-4'>
-          <CartTotals />
-          {user ? (
-            <Link to='/checkout' className='btn btn-primary btn-block mt-8'>
-              Proceed to checkout
-            </Link>
-          ) : (
-            <Link to='/login' className='btn btn-primary btn-block mt-8'>
-              please login
-            </Link>
-          )}
-        </div>
-      </div>
-    </>
-  );
+	// temp
+	const user = null;
+	const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+	if (numItemsInCart === 0) {
+		return <SectionTitle text="Your cart is empty" />;
+	}
+	return (
+		<>
+			<SectionTitle text="Shopping Cart" />
+			<div className="mt-8 grid gap-8  lg:grid-cols-12">
+				<div className="lg:col-span-8">
+					<CartItemsList />
+				</div>
+				<div className="lg:col-span-4 lg:pl-4">
+					<CartTotals />
+					{user ? (
+						<Link to="/checkout" className="btn btn-primary btn-block mt-8">
+							Proceed to checkout
+						</Link>
+					) : (
+						<Link to="/login" className="btn btn-primary btn-block mt-8">
+							please login
+						</Link>
+					)}
+				</div>
+			</div>
+		</>
+	);
 };
 export default Cart;
 ```
@@ -3181,39 +3181,39 @@ export default Cart;
 ## Solution (38) - Cart Totals
 
 ```js
-import { useSelector } from 'react-redux';
-import { formatPrice } from '../utils';
+import { useSelector } from "react-redux";
+import { formatPrice } from "../utils";
 const CartTotals = () => {
-  const { cartTotal, shipping, tax, orderTotal } = useSelector(
-    (state) => state.cartState
-  );
+	const { cartTotal, shipping, tax, orderTotal } = useSelector(
+		(state) => state.cartState
+	);
 
-  return (
-    <div className='card bg-base-200'>
-      <div className='card-body'>
-        {/* SUBTOTAL */}
-        <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
-          <span>Subtotal</span>
-          <span className='font-medium'>{formatPrice(cartTotal)}</span>
-        </p>
-        {/* SHIPPING */}
-        <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
-          <span>Shipping</span>
-          <span className='font-medium'>{formatPrice(shipping)}</span>
-        </p>
-        {/* Tax */}
-        <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
-          <span>Tax</span>
-          <span className='font-medium'>{formatPrice(tax)}</span>
-        </p>
-        {/* Total */}
-        <p className='mt-4 flex justify-between text-sm  pb-2'>
-          <span className='font-bold'>Order Total</span>
-          <span className='font-bold'>{formatPrice(orderTotal)}</span>
-        </p>
-      </div>
-    </div>
-  );
+	return (
+		<div className="card bg-base-200">
+			<div className="card-body">
+				{/* SUBTOTAL */}
+				<p className="flex justify-between text-xs border-b border-base-300 pb-2">
+					<span>Subtotal</span>
+					<span className="font-medium">{formatPrice(cartTotal)}</span>
+				</p>
+				{/* SHIPPING */}
+				<p className="flex justify-between text-xs border-b border-base-300 pb-2">
+					<span>Shipping</span>
+					<span className="font-medium">{formatPrice(shipping)}</span>
+				</p>
+				{/* Tax */}
+				<p className="flex justify-between text-xs border-b border-base-300 pb-2">
+					<span>Tax</span>
+					<span className="font-medium">{formatPrice(tax)}</span>
+				</p>
+				{/* Total */}
+				<p className="mt-4 flex justify-between text-sm  pb-2">
+					<span className="font-bold">Order Total</span>
+					<span className="font-bold">{formatPrice(orderTotal)}</span>
+				</p>
+			</div>
+		</div>
+	);
 };
 export default CartTotals;
 ```
@@ -3296,18 +3296,18 @@ export default CartTotals;
 CartItemsList.jsx
 
 ```js
-import { useSelector } from 'react-redux';
-import CartItem from './CartItem';
+import { useSelector } from "react-redux";
+import CartItem from "./CartItem";
 const CartItemsList = () => {
-  const cartItems = useSelector((state) => state.cartState.cartItems);
+	const cartItems = useSelector((state) => state.cartState.cartItems);
 
-  return (
-    <div>
-      {cartItems.map((item) => {
-        return <CartItem key={item.cartID} cartItem={item} />;
-      })}
-    </div>
-  );
+	return (
+		<div>
+			{cartItems.map((item) => {
+				return <CartItem key={item.cartID} cartItem={item} />;
+			})}
+		</div>
+	);
 };
 export default CartItemsList;
 ```
@@ -3315,79 +3315,79 @@ export default CartItemsList;
 CartItem.jsx
 
 ```js
-import { formatPrice, generateAmountOptions } from '../utils';
-import { removeItem, editItem } from '../features/cart/cartSlice';
-import { useDispatch } from 'react-redux';
+import { formatPrice, generateAmountOptions } from "../utils";
+import { removeItem, editItem } from "../features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 const CartItem = ({ cartItem }) => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const removeItemFromTheCart = () => {
-    dispatch(removeItem({ cartID }));
-  };
-  const handleAmount = (e) => {
-    dispatch(editItem({ cartID, amount: parseInt(e.target.value) }));
-  };
+	const removeItemFromTheCart = () => {
+		dispatch(removeItem({ cartID }));
+	};
+	const handleAmount = (e) => {
+		dispatch(editItem({ cartID, amount: parseInt(e.target.value) }));
+	};
 
-  const { cartID, title, price, image, amount, company, productColor } =
-    cartItem;
+	const { cartID, title, price, image, amount, company, productColor } =
+		cartItem;
 
-  return (
-    <article
-      key={cartID}
-      className='mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0'
-    >
-      {/* IMAGE */}
-      <img
-        src={image}
-        alt={title}
-        className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover'
-      />
-      {/* INFO */}
-      <div className='sm:ml-16 sm:w-48'>
-        {/* TITLE */}
-        <h3 className='capitalize font-medium'>{title}</h3>
-        {/* COMPANY */}
-        <h4 className='mt-2 capitalize text-sm text-neutral-content'>
-          {company}
-        </h4>
-        {/* COLOR */}
-        <p className='mt-4 text-sm capitalize flex items-center gap-x-2'>
-          color :
-          <span
-            className='badge badge-sm'
-            style={{ backgroundColor: productColor }}
-          ></span>
-        </p>
-      </div>
-      <div className='sm:ml-12'>
-        {/* AMOUNT */}
-        <div className='form-control max-w-xs'>
-          <label htmlFor='amount' className='label p-0'>
-            <span className='label-text'>Amount</span>
-          </label>
-          <select
-            name='amount'
-            id='amount'
-            className='mt-2 select select-base select-bordered select-xs'
-            value={amount}
-            onChange={handleAmount}
-          >
-            {generateAmountOptions(amount + 5)}
-          </select>
-        </div>
-        {/* REMOVE */}
-        <button
-          className='mt-2 link link-primary link-hover text-sm'
-          onClick={removeItemFromTheCart}
-        >
-          remove
-        </button>
-      </div>
+	return (
+		<article
+			key={cartID}
+			className="mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0"
+		>
+			{/* IMAGE */}
+			<img
+				src={image}
+				alt={title}
+				className="h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover"
+			/>
+			{/* INFO */}
+			<div className="sm:ml-16 sm:w-48">
+				{/* TITLE */}
+				<h3 className="capitalize font-medium">{title}</h3>
+				{/* COMPANY */}
+				<h4 className="mt-2 capitalize text-sm text-neutral-content">
+					{company}
+				</h4>
+				{/* COLOR */}
+				<p className="mt-4 text-sm capitalize flex items-center gap-x-2">
+					color :
+					<span
+						className="badge badge-sm"
+						style={{ backgroundColor: productColor }}
+					></span>
+				</p>
+			</div>
+			<div className="sm:ml-12">
+				{/* AMOUNT */}
+				<div className="form-control max-w-xs">
+					<label htmlFor="amount" className="label p-0">
+						<span className="label-text">Amount</span>
+					</label>
+					<select
+						name="amount"
+						id="amount"
+						className="mt-2 select select-base select-bordered select-xs"
+						value={amount}
+						onChange={handleAmount}
+					>
+						{generateAmountOptions(amount + 5)}
+					</select>
+				</div>
+				{/* REMOVE */}
+				<button
+					className="mt-2 link link-primary link-hover text-sm"
+					onClick={removeItemFromTheCart}
+				>
+					remove
+				</button>
+			</div>
 
-      {/* PRICE */}
-      <p className='font-medium sm:ml-auto'>{formatPrice(price)}</p>
-    </article>
-  );
+			{/* PRICE */}
+			<p className="font-medium sm:ml-auto">{formatPrice(price)}</p>
+		</article>
+	);
 };
 export default CartItem;
 ```
@@ -3395,9 +3395,9 @@ export default CartItem;
 CartItem.jsx
 
 ```js
-<div className='sm:ml-12'>
-  {/* AMOUNT */}
-  {/* REMOVE */}
+<div className="sm:ml-12">
+	{/* AMOUNT */}
+	{/* REMOVE */}
 </div>
 ```
 
@@ -3446,28 +3446,28 @@ CartItem.jsx
 ## Solution (40) - Setup User Slice
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
-  user: { username: 'coding addict' },
-  theme: 'dracula',
+	user: { username: "coding addict" },
+	theme: "dracula",
 };
 
 const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    loginUser: (state, action) => {
-      console.log('login');
-    },
-    logoutUser: (state) => {
-      console.log('logout');
-    },
-    toggleTheme: (state) => {
-      console.log('toggle theme');
-    },
-  },
+	name: "user",
+	initialState,
+	reducers: {
+		loginUser: (state, action) => {
+			console.log("login");
+		},
+		logoutUser: (state) => {
+			console.log("logout");
+		},
+		toggleTheme: (state) => {
+			console.log("toggle theme");
+		},
+	},
 });
 
 export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
@@ -3478,16 +3478,16 @@ export default userSlice.reducer;
 store.js
 
 ```js
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
-import cartReducer from './features/cart/cartSlice';
-import userReducer from './features/user/userSlice';
+import cartReducer from "./features/cart/cartSlice";
+import userReducer from "./features/user/userSlice";
 
 export const store = configureStore({
-  reducer: {
-    cartState: cartReducer,
-    userState: userReducer,
-  },
+	reducer: {
+		cartState: cartReducer,
+		userState: userReducer,
+	},
 });
 ```
 
@@ -3500,42 +3500,42 @@ export const store = configureStore({
 userSlice.js
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const themes = {
-  winter: 'winter',
-  dracula: 'dracula',
+	winter: "winter",
+	dracula: "dracula",
 };
 
 const getThemeFromLocalStorage = () => {
-  const theme = localStorage.getItem('theme') || themes.winter;
-  document.documentElement.setAttribute('data-theme', theme);
-  return theme;
+	const theme = localStorage.getItem("theme") || themes.winter;
+	document.documentElement.setAttribute("data-theme", theme);
+	return theme;
 };
 
 const initialState = {
-  user: { username: 'coding addict' },
-  theme: getThemeFromLocalStorage(),
+	user: { username: "coding addict" },
+	theme: getThemeFromLocalStorage(),
 };
 
 const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    loginUser: (state, action) => {
-      console.log('login');
-    },
-    logoutUser: (state) => {
-      console.log('logout');
-    },
-    toggleTheme: (state) => {
-      const { dracula, winter } = themes;
-      state.theme = state.theme === dracula ? winter : dracula;
-      document.documentElement.setAttribute('data-theme', state.theme);
-      localStorage.setItem('theme', state.theme);
-    },
-  },
+	name: "user",
+	initialState,
+	reducers: {
+		loginUser: (state, action) => {
+			console.log("login");
+		},
+		logoutUser: (state) => {
+			console.log("logout");
+		},
+		toggleTheme: (state) => {
+			const { dracula, winter } = themes;
+			state.theme = state.theme === dracula ? winter : dracula;
+			document.documentElement.setAttribute("data-theme", state.theme);
+			localStorage.setItem("theme", state.theme);
+		},
+	},
 });
 
 export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
@@ -3546,75 +3546,75 @@ export default userSlice.reducer;
 Navbar.js
 
 ```js
-import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
-import { FaBarsStaggered } from 'react-icons/fa6';
-import { NavLink } from 'react-router-dom';
-import NavLinks from './NavLinks';
+import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
+import NavLinks from "./NavLinks";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../features/user/userSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../features/user/userSlice";
 
 const Navbar = () => {
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+	const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
-  const dispatch = useDispatch();
-  const handleTheme = () => {
-    dispatch(toggleTheme());
-  };
-  return (
-    <nav className='bg-base-200'>
-      <div className='navbar align-element '>
-        <div className='navbar-start'>
-          {/* Title */}
-          <NavLink
-            to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center '
-          >
-            C
-          </NavLink>
-          {/* DROPDOWN */}
-          <div className='dropdown'>
-            <label tabIndex={0} className='btn btn-ghost lg:hidden'>
-              <FaBarsStaggered className='h-6 w-6' />
-            </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
-              <NavLinks />
-            </ul>
-          </div>
-        </div>
-        <div className='navbar-center hidden lg:flex'>
-          <ul className='menu menu-horizontal '>
-            <NavLinks />
-          </ul>
-        </div>
-        <div className='navbar-end'>
-          {/* THEME ICONS */}
-          <label className='swap swap-rotate '>
-            {/* this hidden checkbox controls the state */}
-            <input type='checkbox' onChange={handleTheme} />
+	const dispatch = useDispatch();
+	const handleTheme = () => {
+		dispatch(toggleTheme());
+	};
+	return (
+		<nav className="bg-base-200">
+			<div className="navbar align-element ">
+				<div className="navbar-start">
+					{/* Title */}
+					<NavLink
+						to="/"
+						className="hidden lg:flex btn btn-primary text-3xl items-center "
+					>
+						C
+					</NavLink>
+					{/* DROPDOWN */}
+					<div className="dropdown">
+						<label tabIndex={0} className="btn btn-ghost lg:hidden">
+							<FaBarsStaggered className="h-6 w-6" />
+						</label>
+						<ul
+							tabIndex={0}
+							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
+						>
+							<NavLinks />
+						</ul>
+					</div>
+				</div>
+				<div className="navbar-center hidden lg:flex">
+					<ul className="menu menu-horizontal ">
+						<NavLinks />
+					</ul>
+				</div>
+				<div className="navbar-end">
+					{/* THEME ICONS */}
+					<label className="swap swap-rotate ">
+						{/* this hidden checkbox controls the state */}
+						<input type="checkbox" onChange={handleTheme} />
 
-            {/* sun icon */}
-            <BsSunFill className='swap-on h-4 w-4' />
+						{/* sun icon */}
+						<BsSunFill className="swap-on h-4 w-4" />
 
-            {/* moon icon */}
-            <BsMoonFill className='swap-off h-4 w-4' />
-          </label>
-          {/* CART LINK*/}
-          <NavLink to='cart' className='btn btn-ghost btn-circle btn-md ml-4'>
-            <div className='indicator'>
-              <BsCart3 className='h-6 w-6' />
-              <span className='badge badge-sm badge-primary indicator-item'>
-                {numItemsInCart}
-              </span>
-            </div>
-          </NavLink>
-        </div>
-      </div>
-    </nav>
-  );
+						{/* moon icon */}
+						<BsMoonFill className="swap-off h-4 w-4" />
+					</label>
+					{/* CART LINK*/}
+					<NavLink to="cart" className="btn btn-ghost btn-circle btn-md ml-4">
+						<div className="indicator">
+							<BsCart3 className="h-6 w-6" />
+							<span className="badge badge-sm badge-primary indicator-item">
+								{numItemsInCart}
+							</span>
+						</div>
+					</NavLink>
+				</div>
+			</div>
+		</nav>
+	);
 };
 export default Navbar;
 ```
@@ -3640,46 +3640,46 @@ logoutUser: (state) => {
 Header.js
 
 ```js
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../features/user/userSlice';
-import { clearCart } from '../features/cart/cartSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logoutUser } from "../features/user/userSlice";
+import { clearCart } from "../features/cart/cartSlice";
 const Header = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.userState.user);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const user = useSelector((state) => state.userState.user);
 
-  const handleLogout = () => {
-    navigate('/');
-    dispatch(clearCart());
-    dispatch(logoutUser());
-  };
-  return (
-    <header className=' bg-neutral py-2 text-neutral-content '>
-      <div className='align-element flex justify-center sm:justify-end '>
-        {user ? (
-          <div className='flex gap-x-2 sm:gap-x-8 items-center'>
-            <p className='text-xs sm:text-sm'>Hello, {user.username}</p>
-            <button
-              className='btn btn-xs btn-outline btn-primary '
-              onClick={handleLogout}
-            >
-              logout
-            </button>
-          </div>
-        ) : (
-          <div className='flex gap-x-6 justify-center items-center'>
-            <Link to='/login' className='link link-hover text-xs sm:text-sm'>
-              Sign in / Guest
-            </Link>
-            <Link to='/register' className='link link-hover text-xs sm:text-sm'>
-              Create an Account
-            </Link>
-          </div>
-        )}
-      </div>
-    </header>
-  );
+	const handleLogout = () => {
+		navigate("/");
+		dispatch(clearCart());
+		dispatch(logoutUser());
+	};
+	return (
+		<header className=" bg-neutral py-2 text-neutral-content ">
+			<div className="align-element flex justify-center sm:justify-end ">
+				{user ? (
+					<div className="flex gap-x-2 sm:gap-x-8 items-center">
+						<p className="text-xs sm:text-sm">Hello, {user.username}</p>
+						<button
+							className="btn btn-xs btn-outline btn-primary "
+							onClick={handleLogout}
+						>
+							logout
+						</button>
+					</div>
+				) : (
+					<div className="flex gap-x-6 justify-center items-center">
+						<Link to="/login" className="link link-hover text-xs sm:text-sm">
+							Sign in / Guest
+						</Link>
+						<Link to="/register" className="link link-hover text-xs sm:text-sm">
+							Create an Account
+						</Link>
+					</div>
+				)}
+			</div>
+		</header>
+	);
 };
 export default Header;
 ```
@@ -3687,35 +3687,35 @@ export default Header;
 NavLinks.jsx
 
 ```js
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const NavLinks = () => {
-  const user = useSelector((state) => state.userState.user);
+	const user = useSelector((state) => state.userState.user);
 
-  return (
-    <>
-      {links.map((link) => {
-        const { id, url, text } = link;
-        if ((url === 'checkout' || url === 'orders') && !user) return null;
-        return (
-          <li key={id}>
-            <NavLink className='capitalize' to={url}>
-              {text}
-            </NavLink>
-          </li>
-        );
-      })}
-    </>
-  );
+	return (
+		<>
+			{links.map((link) => {
+				const { id, url, text } = link;
+				if ((url === "checkout" || url === "orders") && !user) return null;
+				return (
+					<li key={id}>
+						<NavLink className="capitalize" to={url}>
+							{text}
+						</NavLink>
+					</li>
+				);
+			})}
+		</>
+	);
 };
 export default NavLinks;
 ```
 
 ```js
 const Cart = () => {
-  // temp
-  const { user } = useSelector((state) => state.userState);
+	// temp
+	const { user } = useSelector((state) => state.userState);
 };
 ```
 
@@ -3759,55 +3759,55 @@ const Cart = () => {
 Register.jsx
 
 ```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, redirect, Link } from 'react-router-dom';
+import { FormInput, SubmitBtn } from "../components";
+import { Form, redirect, Link } from "react-router-dom";
 
-import { customFetch } from '../utils';
-import { toast } from 'react-toastify';
+import { customFetch } from "../utils";
+import { toast } from "react-toastify";
 export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  try {
-    const response = await customFetch.post('/auth/local/register', data);
-    toast.success('account created successfully');
-    return redirect('/login');
-  } catch (error) {
-    const errorMessage =
-      error?.response?.data?.error?.message ||
-      'please double check your credentials';
+	const formData = await request.formData();
+	const data = Object.fromEntries(formData);
+	try {
+		const response = await customFetch.post("/auth/local/register", data);
+		toast.success("account created successfully");
+		return redirect("/login");
+	} catch (error) {
+		const errorMessage =
+			error?.response?.data?.error?.message ||
+			"please double check your credentials";
 
-    toast.error(errorMessage);
-    return null;
-  }
+		toast.error(errorMessage);
+		return null;
+	}
 };
 
 const Register = () => {
-  return (
-    <section className='h-screen grid place-items-center'>
-      <Form
-        method='POST'
-        className='card w-96 py-8 px-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
-        <h4 className='text-center text-3xl font-bold'>Register</h4>
-        <FormInput type='text' label='username' name='username' />
-        <FormInput type='email' label='email' name='email' />
-        <FormInput type='password' label='password' name='password' />
-        <div className='mt-4'>
-          <SubmitBtn text='register' />
-        </div>
+	return (
+		<section className="h-screen grid place-items-center">
+			<Form
+				method="POST"
+				className="card w-96 py-8 px-8 bg-base-100 shadow-lg flex flex-col gap-y-4"
+			>
+				<h4 className="text-center text-3xl font-bold">Register</h4>
+				<FormInput type="text" label="username" name="username" />
+				<FormInput type="email" label="email" name="email" />
+				<FormInput type="password" label="password" name="password" />
+				<div className="mt-4">
+					<SubmitBtn text="register" />
+				</div>
 
-        <p className='text-center'>
-          Already a member?
-          <Link
-            to='/login'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
-            login
-          </Link>
-        </p>
-      </Form>
-    </section>
-  );
+				<p className="text-center">
+					Already a member?
+					<Link
+						to="/login"
+						className="ml-2 link link-hover link-primary capitalize"
+					>
+						login
+					</Link>
+				</p>
+			</Form>
+		</section>
+	);
 };
 export default Register;
 ```
@@ -3839,11 +3839,11 @@ Login.jsx
 
 ```js
 export const action =
-  (store) =>
-  async ({ request }) => {
-    console.log(store);
-    return store;
-  };
+	(store) =>
+	async ({ request }) => {
+		console.log(store);
+		return store;
+	};
 ```
 
 ### Challenge (45) - Login User
@@ -3892,34 +3892,34 @@ loginUser: (state, action) => {
 Login.jsx
 
 ```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, Link, redirect, useNavigate } from 'react-router-dom';
-import { customFetch } from '../utils';
-import { toast } from 'react-toastify';
-import { loginUser } from '../features/user/userSlice';
-import { useDispatch } from 'react-redux';
+import { FormInput, SubmitBtn } from "../components";
+import { Form, Link, redirect, useNavigate } from "react-router-dom";
+import { customFetch } from "../utils";
+import { toast } from "react-toastify";
+import { loginUser } from "../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 export const action =
-  (store) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    try {
-      const response = await customFetch.post('/auth/local', data);
+	(store) =>
+	async ({ request }) => {
+		const formData = await request.formData();
+		const data = Object.fromEntries(formData);
+		try {
+			const response = await customFetch.post("/auth/local", data);
 
-      store.dispatch(loginUser(response.data));
-      toast.success('logged in successfully');
-      return redirect('/');
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'please double check your credentials';
+			store.dispatch(loginUser(response.data));
+			toast.success("logged in successfully");
+			return redirect("/");
+		} catch (error) {
+			console.log(error);
+			const errorMessage =
+				error?.response?.data?.error?.message ||
+				"please double check your credentials";
 
-      toast.error(errorMessage);
-      return null;
-    }
-  };
+			toast.error(errorMessage);
+			return null;
+		}
+	};
 ```
 
 userSlice.js
@@ -3966,30 +3966,30 @@ Login.jsx
 
 ```js
 const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const loginAsGuestUser = async () => {
-    try {
-      const response = await customFetch.post('/auth/local', {
-        identifier: 'test@test.com',
-        password: 'secret',
-      });
-      dispatch(loginUser(response.data));
-      toast.success('welcome guest user');
-      navigate('/');
-    } catch (error) {
-      console.log(error);
-      toast.error('guest user login error.please try later.');
-    }
-  };
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const loginAsGuestUser = async () => {
+		try {
+			const response = await customFetch.post("/auth/local", {
+				identifier: "test@test.com",
+				password: "secret",
+			});
+			dispatch(loginUser(response.data));
+			toast.success("welcome guest user");
+			navigate("/");
+		} catch (error) {
+			console.log(error);
+			toast.error("guest user login error.please try later.");
+		}
+	};
 };
 
 <button
-  type='button'
-  className='btn btn-secondary btn-block'
-  onClick={loginAsGuestUser}
+	type="button"
+	className="btn btn-secondary btn-block"
+	onClick={loginAsGuestUser}
 >
-  guest user
+	guest user
 </button>;
 ```
 
@@ -4021,23 +4021,23 @@ const Login = () => {
 Checkout.jsx
 
 ```js
-import { useSelector } from 'react-redux';
-import { CheckoutForm, SectionTitle, CartTotals } from '../components';
+import { useSelector } from "react-redux";
+import { CheckoutForm, SectionTitle, CartTotals } from "../components";
 
 const Checkout = () => {
-  const cartItems = useSelector((state) => state.cartState.cartTotal);
-  if (cartTotal.length === 0) {
-    return <SectionTitle text='Your cart is empty' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Place your order' />
-      <div className='mt-8 grid gap-8  md:grid-cols-2 items-start'>
-        <CheckoutForm />
-        <CartTotals />
-      </div>
-    </>
-  );
+	const cartItems = useSelector((state) => state.cartState.cartTotal);
+	if (cartTotal.length === 0) {
+		return <SectionTitle text="Your cart is empty" />;
+	}
+	return (
+		<>
+			<SectionTitle text="Place your order" />
+			<div className="mt-8 grid gap-8  md:grid-cols-2 items-start">
+				<CheckoutForm />
+				<CartTotals />
+			</div>
+		</>
+	);
 };
 export default Checkout;
 ```
@@ -4099,17 +4099,17 @@ const router = createBrowserRouter([
 Checkout.jsx
 
 ```js
-import { redirect } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const loader = (store) => async () => {
-  const user = store.getState().userState.user;
+	const user = store.getState().userState.user;
 
-  if (!user) {
-    toast.warn('You must be logged in to checkout');
-    return redirect('/login');
-  }
-  return null;
+	if (!user) {
+		toast.warn("You must be logged in to checkout");
+		return redirect("/login");
+	}
+	return null;
 };
 ```
 
@@ -4167,87 +4167,87 @@ export const loader = (store) => async () => {
 App.jsx
 
 ```js
-import { action as checkoutAction } from './components/CheckoutForm';
-import { store } from './store';
+import { action as checkoutAction } from "./components/CheckoutForm";
+import { store } from "./store";
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: 'checkout',
-        element: <Checkout />,
-        loader: checkoutLoader(store),
-        action: checkoutAction(store),
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <HomeLayout />,
+		errorElement: <Error />,
+		children: [
+			{
+				path: "checkout",
+				element: <Checkout />,
+				loader: checkoutLoader(store),
+				action: checkoutAction(store),
+			},
+		],
+	},
 ]);
 ```
 
 CheckoutForm.jsx
 
 ```js
-import { Form, redirect } from 'react-router-dom';
-import FormInput from './FormInput';
-import SubmitBtn from './SubmitBtn';
-import { customFetch, formatPrice } from '../utils';
-import { toast } from 'react-toastify';
-import { clearCart } from '../features/cart/cartSlice';
+import { Form, redirect } from "react-router-dom";
+import FormInput from "./FormInput";
+import SubmitBtn from "./SubmitBtn";
+import { customFetch, formatPrice } from "../utils";
+import { toast } from "react-toastify";
+import { clearCart } from "../features/cart/cartSlice";
 
 export const action =
-  (store) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const { name, address } = Object.fromEntries(formData);
-    const user = store.getState().userState.user;
-    const { cartItems, orderTotal, numItemsInCart } =
-      store.getState().cartState;
+	(store) =>
+	async ({ request }) => {
+		const formData = await request.formData();
+		const { name, address } = Object.fromEntries(formData);
+		const user = store.getState().userState.user;
+		const { cartItems, orderTotal, numItemsInCart } =
+			store.getState().cartState;
 
-    const info = {
-      name,
-      address,
-      chargeTotal: orderTotal,
-      orderTotal: formatPrice(orderTotal),
-      cartItems,
-      numItemsInCart,
-    };
-    try {
-      const response = await customFetch.post(
-        '/orders',
-        { data: info },
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      store.dispatch(clearCart());
-      toast.success('order placed successfully');
-      return redirect('/orders');
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error placing your order';
+		const info = {
+			name,
+			address,
+			chargeTotal: orderTotal,
+			orderTotal: formatPrice(orderTotal),
+			cartItems,
+			numItemsInCart,
+		};
+		try {
+			const response = await customFetch.post(
+				"/orders",
+				{ data: info },
+				{
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
+			store.dispatch(clearCart());
+			toast.success("order placed successfully");
+			return redirect("/orders");
+		} catch (error) {
+			console.log(error);
+			const errorMessage =
+				error?.response?.data?.error?.message ||
+				"there was an error placing your order";
 
-      toast.error(errorMessage);
-      return null;
-    }
-  };
+			toast.error(errorMessage);
+			return null;
+		}
+	};
 const CheckoutForm = () => {
-  return (
-    <Form method='POST' className='flex flex-col gap-y-4'>
-      <h4 className='font-medium text-xl'>Shipping Information</h4>
-      <FormInput label='first name' name='name' type='text' />
-      <FormInput label='address' name='address' type='text' />
-      <div className='mt-4'>
-        <SubmitBtn text='Place Your Order' />
-      </div>
-    </Form>
-  );
+	return (
+		<Form method="POST" className="flex flex-col gap-y-4">
+			<h4 className="font-medium text-xl">Shipping Information</h4>
+			<FormInput label="first name" name="name" type="text" />
+			<FormInput label="address" name="address" type="text" />
+			<div className="mt-4">
+				<SubmitBtn text="Place Your Order" />
+			</div>
+		</Form>
+	);
 };
 export default CheckoutForm;
 ```
@@ -4341,46 +4341,46 @@ import { loader as ordersLoader } from './pages/Orders';
 Orders.jsx
 
 ```js
-import { redirect, useLoaderData } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { customFetch } from '../utils';
-import { OrdersList, PaginationContainer, SectionTitle } from '../components';
+import { redirect, useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
+import { customFetch } from "../utils";
+import { OrdersList, PaginationContainer, SectionTitle } from "../components";
 
 export const loader =
-  (store) =>
-  async ({ request }) => {
-    const user = store.getState().userState.user;
+	(store) =>
+	async ({ request }) => {
+		const user = store.getState().userState.user;
 
-    if (!user) {
-      toast.warn('You must be logged in to view orders');
-      return redirect('/login');
-    }
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    try {
-      const response = await customFetch.get('/orders', {
-        params,
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+		if (!user) {
+			toast.warn("You must be logged in to view orders");
+			return redirect("/login");
+		}
+		const params = Object.fromEntries([
+			...new URL(request.url).searchParams.entries(),
+		]);
+		try {
+			const response = await customFetch.get("/orders", {
+				params,
+				headers: {
+					Authorization: `Bearer ${user.token}`,
+				},
+			});
 
-      return { orders: response.data.data, meta: response.data.meta };
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error accessing your orders';
+			return { orders: response.data.data, meta: response.data.meta };
+		} catch (error) {
+			console.log(error);
+			const errorMessage =
+				error?.response?.data?.error?.message ||
+				"there was an error accessing your orders";
 
-      toast.error(errorMessage);
-      if (error?.response?.status === 401 || 403) return redirect('/login');
+			toast.error(errorMessage);
+			if (error?.response?.status === 401 || 403) return redirect("/login");
 
-      return null;
-    }
-  };
+			return null;
+		}
+	};
 const Orders = () => {
-  return <h1 className='text-3xl'>orders</h1>;
+	return <h1 className="text-3xl">orders</h1>;
 };
 export default Orders;
 ```
@@ -4446,17 +4446,17 @@ Orders.jsx
 
 ```js
 const Orders = () => {
-  const { meta } = useLoaderData();
-  if (meta.pagination.total < 1) {
-    return <SectionTitle text='Please make an order' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Your Orders' />
-      <OrdersList />
-      <PaginationContainer />
-    </>
-  );
+	const { meta } = useLoaderData();
+	if (meta.pagination.total < 1) {
+		return <SectionTitle text="Please make an order" />;
+	}
+	return (
+		<>
+			<SectionTitle text="Your Orders" />
+			<OrdersList />
+			<PaginationContainer />
+		</>
+	);
 };
 export default Orders;
 ```
@@ -4464,52 +4464,52 @@ export default Orders;
 OrdersList.jsx
 
 ```js
-import { useLoaderData } from 'react-router-dom';
-import day from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
+import { useLoaderData } from "react-router-dom";
+import day from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 day.extend(advancedFormat);
 
 const OrdersList = () => {
-  const { orders, meta } = useLoaderData();
-  return (
-    <div className='mt-8'>
-      <h4 className='mb-4 capitalize'>
-        total orders : {meta.pagination.total}
-      </h4>
-      <div className='overflow-x-auto '>
-        <table className='table table-zebra'>
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Products</th>
-              <th>Cost</th>
-              <th className='hidden sm:block'>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => {
-              const id = order.id;
-              const { name, address, numItemsInCart, orderTotal, createdAt } =
-                order.attributes;
+	const { orders, meta } = useLoaderData();
+	return (
+		<div className="mt-8">
+			<h4 className="mb-4 capitalize">
+				total orders : {meta.pagination.total}
+			</h4>
+			<div className="overflow-x-auto ">
+				<table className="table table-zebra">
+					{/* head */}
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Address</th>
+							<th>Products</th>
+							<th>Cost</th>
+							<th className="hidden sm:block">Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{orders.map((order) => {
+							const id = order.id;
+							const { name, address, numItemsInCart, orderTotal, createdAt } =
+								order.attributes;
 
-              const date = day(createdAt).format('hh:mm a - MMM Do, YYYY ');
-              return (
-                <tr key={id}>
-                  <td>{name}</td>
-                  <td>{address}</td>
-                  <td>{numItemsInCart}</td>
-                  <td>{orderTotal}</td>
-                  <td className='hidden sm:block'>{date}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+							const date = day(createdAt).format("hh:mm a - MMM Do, YYYY ");
+							return (
+								<tr key={id}>
+									<td>{name}</td>
+									<td>{address}</td>
+									<td>{numItemsInCart}</td>
+									<td>{orderTotal}</td>
+									<td className="hidden sm:block">{date}</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	);
 };
 export default OrdersList;
 ```
@@ -4549,97 +4549,97 @@ export default OrdersList;
 ComplexPaginationContainer.jsx
 
 ```js
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 const ComplexPaginationContainer = () => {
-  const { meta } = useLoaderData();
-  const { pageCount, page } = meta.pagination;
+	const { meta } = useLoaderData();
+	const { pageCount, page } = meta.pagination;
 
-  const { search, pathname } = useLocation();
-  const navigate = useNavigate();
-  const handlePageChange = (pageNumber) => {
-    const searchParams = new URLSearchParams(search);
-    searchParams.set('page', pageNumber);
-    navigate(`${pathname}?${searchParams.toString()}`);
-  };
+	const { search, pathname } = useLocation();
+	const navigate = useNavigate();
+	const handlePageChange = (pageNumber) => {
+		const searchParams = new URLSearchParams(search);
+		searchParams.set("page", pageNumber);
+		navigate(`${pathname}?${searchParams.toString()}`);
+	};
 
-  const addPageButton = ({ pageNumber, activeClass }) => {
-    return (
-      <button
-        key={pageNumber}
-        onClick={() => handlePageChange(pageNumber)}
-        className={`btn btn-xs sm:btn-md border-none join-item ${
-          activeClass ? 'bg-base-300 border-base-300 ' : ''
-        }`}
-      >
-        {pageNumber}
-      </button>
-    );
-  };
+	const addPageButton = ({ pageNumber, activeClass }) => {
+		return (
+			<button
+				key={pageNumber}
+				onClick={() => handlePageChange(pageNumber)}
+				className={`btn btn-xs sm:btn-md border-none join-item ${
+					activeClass ? "bg-base-300 border-base-300 " : ""
+				}`}
+			>
+				{pageNumber}
+			</button>
+		);
+	};
 
-  const renderPageButtons = () => {
-    const pageButtons = [];
-    // first button
-    pageButtons.push(addPageButton({ pageNumber: 1, activeClass: page === 1 }));
+	const renderPageButtons = () => {
+		const pageButtons = [];
+		// first button
+		pageButtons.push(addPageButton({ pageNumber: 1, activeClass: page === 1 }));
 
-    // dots
-    if (page > 2) {
-      pageButtons.push(
-        <button className='join-item btn btn-xs sm:btn-md' key='dots-1'>
-          ...
-        </button>
-      );
-    }
+		// dots
+		if (page > 2) {
+			pageButtons.push(
+				<button className="join-item btn btn-xs sm:btn-md" key="dots-1">
+					...
+				</button>
+			);
+		}
 
-    // active/current page
-    if (page !== 1 && page !== pageCount) {
-      pageButtons.push(addPageButton({ pageNumber: page, activeClass: true }));
-    }
-    // dots
-    if (page < pageCount - 1) {
-      pageButtons.push(
-        <button className='join-item btn btn-xs sm:btn-md' key='dots-2'>
-          ...
-        </button>
-      );
-    }
+		// active/current page
+		if (page !== 1 && page !== pageCount) {
+			pageButtons.push(addPageButton({ pageNumber: page, activeClass: true }));
+		}
+		// dots
+		if (page < pageCount - 1) {
+			pageButtons.push(
+				<button className="join-item btn btn-xs sm:btn-md" key="dots-2">
+					...
+				</button>
+			);
+		}
 
-    // last button
-    pageButtons.push(
-      addPageButton({ pageNumber: pageCount, activeClass: page === pageCount })
-    );
-    return pageButtons;
-  };
+		// last button
+		pageButtons.push(
+			addPageButton({ pageNumber: pageCount, activeClass: page === pageCount })
+		);
+		return pageButtons;
+	};
 
-  if (pageCount < 2) return null;
+	if (pageCount < 2) return null;
 
-  return (
-    <div className='mt-16 flex justify-end'>
-      <div className='join'>
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let prevPage = page - 1;
-            if (prevPage < 1) prevPage = pageCount;
-            handlePageChange(prevPage);
-          }}
-        >
-          Prev
-        </button>
-        {renderPageButtons()}
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let nextPage = page + 1;
-            if (nextPage > pageCount) nextPage = 1;
-            handlePageChange(nextPage);
-          }}
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  );
+	return (
+		<div className="mt-16 flex justify-end">
+			<div className="join">
+				<button
+					className="btn btn-xs sm:btn-md join-item"
+					onClick={() => {
+						let prevPage = page - 1;
+						if (prevPage < 1) prevPage = pageCount;
+						handlePageChange(prevPage);
+					}}
+				>
+					Prev
+				</button>
+				{renderPageButtons()}
+				<button
+					className="btn btn-xs sm:btn-md join-item"
+					onClick={() => {
+						let nextPage = page + 1;
+						if (nextPage > pageCount) nextPage = 1;
+						handlePageChange(nextPage);
+					}}
+				>
+					Next
+				</button>
+			</div>
+		</div>
+	);
 };
 export default ComplexPaginationContainer;
 ```
@@ -4658,63 +4658,63 @@ export default ComplexPaginationContainer;
 App.jsx
 
 ```js
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5,
-    },
-  },
+	defaultOptions: {
+		queries: {
+			staleTime: 1000 * 60 * 5,
+		},
+	},
 });
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-        loader: landingLoader(queryClient),
-        errorElement: <ErrorElement />,
-      },
-      {
-        path: 'products',
-        element: <Products />,
-        loader: productsLoader(queryClient),
-        errorElement: <ErrorElement />,
-      },
-      {
-        path: 'products/:id',
-        element: <SingleProduct />,
-        loader: singleProductLoader(queryClient),
-        errorElement: <ErrorElement />,
-      },
-      {
-        path: 'checkout',
-        element: <Checkout />,
-        loader: checkoutLoader(store),
-        action: checkoutAction(store, queryClient),
-      },
-      {
-        path: 'orders',
-        element: <Orders />,
-        loader: ordersLoader(store, queryClient),
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <HomeLayout />,
+		errorElement: <Error />,
+		children: [
+			{
+				index: true,
+				element: <Landing />,
+				loader: landingLoader(queryClient),
+				errorElement: <ErrorElement />,
+			},
+			{
+				path: "products",
+				element: <Products />,
+				loader: productsLoader(queryClient),
+				errorElement: <ErrorElement />,
+			},
+			{
+				path: "products/:id",
+				element: <SingleProduct />,
+				loader: singleProductLoader(queryClient),
+				errorElement: <ErrorElement />,
+			},
+			{
+				path: "checkout",
+				element: <Checkout />,
+				loader: checkoutLoader(store),
+				action: checkoutAction(store, queryClient),
+			},
+			{
+				path: "orders",
+				element: <Orders />,
+				loader: ordersLoader(store, queryClient),
+			},
+		],
+	},
 ]);
 
 const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  );
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router} />
+			<ReactQueryDevtools initialIsOpen={false} />
+		</QueryClientProvider>
+	);
 };
 export default App;
 ```
@@ -4723,9 +4723,9 @@ Landing.js
 
 ```js
 export const loader = (queryClient) => async () => {
-  const response = await customFetch(url);
-  const products = response.data.data;
-  return { products };
+	const response = await customFetch(url);
+	const products = response.data.data;
+	return { products };
 };
 ```
 
@@ -4739,14 +4739,14 @@ Landing.jsx
 
 ```js
 const featuredProductsQuery = {
-  queryKey: ['featuredProducts'],
-  queryFn: () => customFetch(url),
+	queryKey: ["featuredProducts"],
+	queryFn: () => customFetch(url),
 };
 
 export const loader = (queryClient) => async () => {
-  const response = await queryClient.ensureQueryData(featuredProductsQuery);
-  const products = response.data.data;
-  return { products };
+	const response = await queryClient.ensureQueryData(featuredProductsQuery);
+	const products = response.data.data;
+	return { products };
 };
 ```
 
@@ -4760,20 +4760,20 @@ SingleProduct.jsx
 
 ```js
 const singleProductQuery = (id) => {
-  return {
-    queryKey: ['singleProduct', id],
-    queryFn: () => customFetch.get(`/products/${id}`),
-  };
+	return {
+		queryKey: ["singleProduct", id],
+		queryFn: () => customFetch.get(`/products/${id}`),
+	};
 };
 
 export const loader =
-  (queryClient) =>
-  async ({ params }) => {
-    const response = await queryClient.ensureQueryData(
-      singleProductQuery(params.id)
-    );
-    return { product: response.data.data };
-  };
+	(queryClient) =>
+	async ({ params }) => {
+		const response = await queryClient.ensureQueryData(
+			singleProductQuery(params.id)
+		);
+		return { product: response.data.data };
+	};
 ```
 
 ## Challenge (58) - All Products
@@ -4786,42 +4786,42 @@ Products.jsx
 
 ```js
 const allProductsQuery = (queryParams) => {
-  const { search, category, company, sort, price, shipping, page } =
-    queryParams;
+	const { search, category, company, sort, price, shipping, page } =
+		queryParams;
 
-  return {
-    queryKey: [
-      'products',
-      search ?? '',
-      category ?? 'all',
-      company ?? 'all',
-      sort ?? 'a-z',
-      price ?? 100000,
-      shipping ?? false,
-      page ?? 1,
-    ],
-    queryFn: () =>
-      customFetch(url, {
-        params: queryParams,
-      }),
-  };
+	return {
+		queryKey: [
+			"products",
+			search ?? "",
+			category ?? "all",
+			company ?? "all",
+			sort ?? "a-z",
+			price ?? 100000,
+			shipping ?? false,
+			page ?? 1,
+		],
+		queryFn: () =>
+			customFetch(url, {
+				params: queryParams,
+			}),
+	};
 };
 
 export const loader =
-  (queryClient) =>
-  async ({ request }) => {
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    const response = await queryClient.ensureQueryData(
-      allProductsQuery(params)
-    );
+	(queryClient) =>
+	async ({ request }) => {
+		const params = Object.fromEntries([
+			...new URL(request.url).searchParams.entries(),
+		]);
+		const response = await queryClient.ensureQueryData(
+			allProductsQuery(params)
+		);
 
-    const products = response.data.data;
-    const meta = response.data.meta;
+		const products = response.data.data;
+		const meta = response.data.meta;
 
-    return { products, meta, params };
-  };
+		return { products, meta, params };
+	};
 ```
 
 ?? === This operator is known as the nullish coalescing operator in JavaScript. It is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
@@ -4835,77 +4835,77 @@ setup react query and invoke in loader
 ## Solution (59) - Orders
 
 ```js
-import { redirect, useLoaderData } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { customFetch } from '../utils';
+import { redirect, useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
+import { customFetch } from "../utils";
 import {
-  OrdersList,
-  ComplexPaginationContainer,
-  SectionTitle,
-} from '../components';
+	OrdersList,
+	ComplexPaginationContainer,
+	SectionTitle,
+} from "../components";
 
 export const ordersQuery = (params, user) => {
-  return {
-    queryKey: [
-      'orders',
-      user.username,
-      params.page ? parseInt(params.page) : 1,
-    ],
-    queryFn: () =>
-      customFetch.get('/orders', {
-        params,
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      }),
-  };
+	return {
+		queryKey: [
+			"orders",
+			user.username,
+			params.page ? parseInt(params.page) : 1,
+		],
+		queryFn: () =>
+			customFetch.get("/orders", {
+				params,
+				headers: {
+					Authorization: `Bearer ${user.token}`,
+				},
+			}),
+	};
 };
 
 export const loader =
-  (store, queryClient) =>
-  async ({ request }) => {
-    const user = store.getState().userState.user;
+	(store, queryClient) =>
+	async ({ request }) => {
+		const user = store.getState().userState.user;
 
-    if (!user) {
-      toast.warn('You must be logged in to view orders');
-      return redirect('/login');
-    }
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    try {
-      const response = await queryClient.ensureQueryData(
-        ordersQuery(params, user)
-      );
+		if (!user) {
+			toast.warn("You must be logged in to view orders");
+			return redirect("/login");
+		}
+		const params = Object.fromEntries([
+			...new URL(request.url).searchParams.entries(),
+		]);
+		try {
+			const response = await queryClient.ensureQueryData(
+				ordersQuery(params, user)
+			);
 
-      return {
-        orders: response.data.data,
-        meta: response.data.meta,
-      };
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error accessing your orders';
+			return {
+				orders: response.data.data,
+				meta: response.data.meta,
+			};
+		} catch (error) {
+			console.log(error);
+			const errorMessage =
+				error?.response?.data?.error?.message ||
+				"there was an error accessing your orders";
 
-      toast.error(errorMessage);
-      if (error?.response?.status === 401 || 403) return redirect('/login');
-      return null;
-    }
-  };
+			toast.error(errorMessage);
+			if (error?.response?.status === 401 || 403) return redirect("/login");
+			return null;
+		}
+	};
 const Orders = () => {
-  const { meta } = useLoaderData();
+	const { meta } = useLoaderData();
 
-  if (meta.pagination.total < 1) {
-    return <SectionTitle text='Please make an order' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Your Orders' />
-      <OrdersList />
-      <ComplexPaginationContainer />
-    </>
-  );
+	if (meta.pagination.total < 1) {
+		return <SectionTitle text="Please make an order" />;
+	}
+	return (
+		<>
+			<SectionTitle text="Your Orders" />
+			<OrdersList />
+			<ComplexPaginationContainer />
+		</>
+	);
 };
 export default Orders;
 ```

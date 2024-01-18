@@ -45,5 +45,5 @@ const Register = () => {
 			</Form>
 		</section>
 	);
-
+};
 export default Register;
