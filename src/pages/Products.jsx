@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Filters, PaginationContainer, ProductsContainer } from "../components";
+import { IoFilterOutline } from "react-icons/io5";
 import { customFetch } from "../utils";
+import { useLocation } from "react-router-dom";
 const url = "/products";
 
 export const loader = async ({ request }) => {
@@ -25,9 +27,20 @@ export const loader = async ({ request }) => {
 };
 
 const Products = () => {
+	const { search } = useLocation();
+	//will have sticked
+	const [showFilters, setShowFilters] = useState(search ? true : false);
 	return (
 		<div>
-			<Filters />
+			{/* Filter Button */}
+			<div
+				className="filter-btn text-right flex justify-end items-center gap-3 4 cursor-pointer mb-4 "
+				onClick={() => setShowFilters(!showFilters)}
+			>
+				<IoFilterOutline className="w-5 h-5" />
+				<p className="font-medium">Filters</p>
+			</div>
+			{showFilters && <Filters />}
 			<ProductsContainer />
 			<PaginationContainer />
 		</div>
