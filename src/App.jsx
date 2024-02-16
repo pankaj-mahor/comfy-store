@@ -49,6 +49,12 @@ const router = createBrowserRouter([
 				errorElement: <ErrorElement />,
 				loader: singleProductLoader,
 			},
+			{
+				path: "cart",
+				element: <Cart />,
+				errorElement: <ErrorElement />,
+				// loader: singleProductLoader,
+			},
 		],
 	},
 	{

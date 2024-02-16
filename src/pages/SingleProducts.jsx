@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLoaderData } from "react-router-dom";
 import { addItem } from "../features/cart/cartSlice";
 import { customFetch, formatPriceInr, generateAmountOptions } from "../utils";
@@ -22,6 +22,13 @@ const SingleProducts = () => {
 
 	const [productColor, setProductColor] = useState(colors[0]);
 	const [amount, setAmount] = useState(1);
+
+	const cartItems = useSelector((state) => state.cartState.cartItems);
+	const isAlreadyInCart = cartItems.find(
+		(item) => item.productID === product.id
+	);
+
+	// console.log("Already in Cart", isAlreadyInCart);
 
 	const handleAmount = (e) => {
 		setAmount(parseInt(e.target.value));
@@ -122,6 +129,15 @@ const SingleProducts = () => {
 						<button className="btn btn-secondary btn-md" onClick={addToCart}>
 							Add to bag
 						</button>
+						{isAlreadyInCart ? (
+							<Link
+								to="/cart"
+								className="btn btn-outline ml-2 btn-md"
+								// onClick={addToCart}
+							>
+								{isAlreadyInCart?.amount} in cart - Checkout Now
+							</Link>
+						) : null}
 					</div>
 				</div>
 			</div>
