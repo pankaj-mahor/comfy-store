@@ -35,6 +35,24 @@ export const action = (store) => {
 };
 
 const Login = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const guestLogin = async () => {
+		try {
+			const response = await customFetch.post("/auth/local", {
+				identifier: "test@test.com",
+				password: "secret",
+			});
+			dispatch(loginUser(response.data));
+			toast.success("Welcome Guest User");
+			navigate("/");
+		} catch (error) {
+			console.log(error);
+			toast.error("guest login error..");
+		}
+	};
+
 	return (
 		<section className="h-screen grid place-items-center ">
 			<Form
@@ -43,23 +61,17 @@ const Login = () => {
 			>
 				<h4 className="text-center text-3xl font-bold">Login</h4>
 
-				<FormInput
-					type="text"
-					label="Email or Username"
-					name="identifier"
-					defaultValue="panm"
-				/>
-				<FormInput
-					type="password"
-					label="Password"
-					name="password"
-					defaultValue="secr3ey"
-				/>
+				<FormInput type="text" label="Email or Username" name="identifier" />
+				<FormInput type="password" label="Password" name="password" />
 
 				<div className="mt-4">
 					<SubmitBtn text="login" />
 				</div>
-				<button type="button" className="btn btn-secondary btn-block my-3">
+				<button
+					type="button"
+					className="btn btn-secondary btn-block my-3"
+					onClick={guestLogin}
+				>
 					Guest User
 				</button>
 				<p className="text-center">
