@@ -13,3 +13,5 @@ export { default as ProductsList } from "./ProductsList";
 export { default as FormSelect } from "./FormSelect";
 export { default as FormRange } from "./FormRange";
 export { default as Loading } from "./Loading";
+export { default as CartItemLists } from "./CartItemLists";
+export { default as CartItem } from "./CartItem";
