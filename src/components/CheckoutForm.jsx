@@ -10,7 +10,7 @@ import SectionTitle from "./SectionTitle";
 import SubmitBtn from "./SubmitBtn";
 const url = "/orders";
 
-export const action = (store) => {
+export const action = (store, queryClient) => {
 	return async ({ request }) => {
 		const formData = await request.formData();
 		const { name, address } = Object.fromEntries(formData);
@@ -37,6 +37,9 @@ export const action = (store) => {
 					},
 				}
 			);
+
+			//remove query
+			queryClient.removeQueries(["orders"]);
 			store.dispatch(clearCart());
 			toast.success("Order placed successfully.");
 			return redirect("/orders");
