@@ -5,26 +5,47 @@ import { customFetch } from "../utils";
 import { useLocation } from "react-router-dom";
 const url = "/products";
 
-export const loader = async ({ request }) => {
-	// const params = new URL(request.url).searchParams;
-
-	// const search = params.get("search");
-	// console.log(search);
-
-	const params = Object.fromEntries([
-		...new URL(request.url).searchParams.entries(),
-	]);
-
-	// console.log(params);
-	const response = await customFetch(url, {
-		params,
-	});
-	// console.log(response);
-	// console.log(request);
-	const products = response.data.data;
-	const meta = response.data.meta;
-	return { products, meta, params };
+const allProductQuery = (queryParams) => {
+	const { search, category, company, sort, price, shipping, page } =
+		queryParams;
+	return {
+		queryKey: [
+			"allProducts",
+			search ?? "",
+			category ?? "all",
+			company ?? "all",
+			sort ?? "a-z",
+			price ?? 100000,
+			shipping ?? false,
+			page ?? 1,
+		],
+		queryFn: () => customFetch(url, { params: queryParams }),
+	};
 };
+
+export const loader =
+	(queryClient) =>
+	async ({ request }) => {
+		// const params = new URL(request.url).searchParams;
+
+		// const search = params.get("search");
+		// console.log(search);
+
+		const params = Object.fromEntries([
+			...new URL(request.url).searchParams.entries(),
+		]);
+
+		// console.log(params);
+		// const response = await customFetch(url, {
+		// 	params,
+		// });
+		const response = await queryClient.ensureQueryData(allProductQuery(params));
+		// console.log(response);
+		// console.log(request);
+		const products = response.data.data;
+		const meta = response.data.meta;
+		return { products, meta, params };
+	};
 
 const Products = () => {
 	const { search } = useLocation();

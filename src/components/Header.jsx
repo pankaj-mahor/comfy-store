@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,10 +10,14 @@ const Header = () => {
 	const navigate = useNavigate();
 	const user = useSelector((state) => state.userState.user);
 
+	const queryClient = useQueryClient();
+
 	const handleLogout = () => {
 		navigate("/");
 		dispatch(clearCart());
 		dispatch(logoutUser());
+		//remove all queries
+		queryClient.removeQueries();
 	};
 	return (
 		<header className="bg-neutral py-2 text-neutral-content">

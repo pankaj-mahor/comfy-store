@@ -4,14 +4,25 @@ import { Link, useLoaderData } from "react-router-dom";
 import { addItem } from "../features/cart/cartSlice";
 import { customFetch, formatPriceInr, generateAmountOptions } from "../utils";
 
-export const loader = async ({ params }) => {
-	const url = `products/${params.id}`;
-	const response = await customFetch(url);
-	const product = response.data.data;
-	// console.log(productData);
-
-	return { product };
+const singleProductQuery = (id) => {
+	return {
+		queryKey: ["singleProduct", id],
+		queryFn: () => customFetch(`products/${id}`),
+	};
 };
+
+export const loader =
+	(queryClient) =>
+	async ({ params }) => {
+		// const url = `products/${params.id}`;
+		const response = await queryClient.ensureQueryData(
+			singleProductQuery(params.id)
+		);
+		const product = response.data.data;
+		// console.log(productData);
+
+		return { product };
+	};
 
 const SingleProducts = () => {
 	const { product } = useLoaderData();
