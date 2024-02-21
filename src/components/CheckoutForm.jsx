@@ -48,7 +48,7 @@ export const action = (store) => {
 			toast.error(errorMessage);
 
 			//auth error
-			if (error.response.status === 401) {
+			if (error.response.status === 401 || error.response.status === 403) {
 				redirect("/login");
 				store.dispatch(logoutUser());
 			}
